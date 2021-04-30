@@ -12,7 +12,8 @@ aboutBtn.addEventListener('click', () => {
 });
 
 // obj for retriving data from db of users
-
+const setUserName = document.querySelector('.username');
+setUserName.innerHTML = localStorage.getItem('userName');
 const userPosts = {
 	index: document.querySelector('.index'),
 
@@ -25,9 +26,6 @@ const userPosts = {
 
 		await fetchData('./fetchUserPost.php', data)
 			.then((data) => {
-				console.log('heee2', data);
-				// console.log('heee3', dataObj);
-
 				for (let value of data) {
 					console.log(data);
 					let profileInfo = `

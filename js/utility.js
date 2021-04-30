@@ -5,18 +5,14 @@ const fetchData = async (pageName, object) => {
 		headers: {
 			'content-Type': 'application/json'
 		}
-	})
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			return data;
-		});
+	}).then((response) => {
+		return response.json();
+	});
 
 	return response;
 };
 
-const debounce = (fun) => {
+const debounce = (fun, delay) => {
 	let timeout = 0;
 	return (...args) => {
 		if (timeout) {
@@ -24,6 +20,20 @@ const debounce = (fun) => {
 		}
 		timeout = setTimeout(() => {
 			fun.apply(null, args);
-		}, 1000);
+		}, delay);
 	};
+};
+
+const switchElement = (hide, show, bool) => {
+	if (bool) {
+		show.classList.remove('hide');
+		hide.classList.add('hide');
+		// index.classList.remove('show');
+		hide.classList.remove('show');
+	} else {
+		show.classList.add('show');
+		show.classList.remove('hide');
+		hide.classList.add('hide');
+		// index.classList.remove('show');
+	}
 };

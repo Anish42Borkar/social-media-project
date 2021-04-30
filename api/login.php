@@ -8,10 +8,10 @@
     $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-        $user = $data['user'];
-        $pass = $data['pass'];
-        // $user = 'anita';
-        // $pass = '12345';
+        // $user = $data['user'];
+        // $pass = $data['pass'];
+        $user = 'anita';
+        $pass = '12345';
 
         $check_user = mysqli_query($conn, "SELECT * FROM `user` WHERE `name`='$user' AND `password`='$pass'");
         $row = mysqli_fetch_array($check_user);
@@ -23,15 +23,14 @@
             array_push($response, array(
                 'success' => true,
                 'message' => 'login success',
-                'body' => [$user_id,$priority]
+                'body' => [$user_id, $priority]
             ));
 
         }else{
 
             array_push($response, array(
                 'success' => false,
-                'message' => 'login Fail',
-                'body' => []
+                'message' => 'login Fail'
             )); 
 
         }
@@ -40,8 +39,7 @@
 
         array_push($response, array(
             'success' => false,
-            'message' => 'invalid method',
-            'body' => []
+            'message' => 'invalid method'
         )); 
 
     }

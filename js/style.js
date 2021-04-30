@@ -24,14 +24,9 @@ const root = document.querySelector('.autocomplete');
 // this is for sending request for search
 
 const search = document.querySelector('.search');
+
 autoComplete({
 	search,
 	root,
 	fetchData
 });
-// search.addEventListener(
-// 	'input',
-// 	debounce((event) => {
-// 		fetchData('./api/search.php', { searchTerm: event.target.value });
-// 	})
-// );
