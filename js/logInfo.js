@@ -5,7 +5,7 @@ const login = {
 	passLogin: document.querySelector('.pass_login'),
 	outputMsg: document.querySelector('.out_msg'),
 
-	sendData() {
+	async sendData() {
 		const { userNameLogin, passLogin } = this;
 
 		const user = userNameLogin.value;
@@ -16,22 +16,13 @@ const login = {
 			pass
 		};
 
-		fetch('./api/login.php', {
-			method: 'post',
-			body: JSON.stringify(data),
-			headers: {
-				'content-Type': 'application/json'
-			}
-		})
-			.then((response) => {
-				// console.log(response);
-				return response.json();
-			})
+		await fetchData('./api/login.php', data)
 			.then((data) => {
 				console.log(data);
 				this.outputMsg.innerText = data[0].message;
-				location.href = './index.html';
-				// location.href = './profile.html';
+				if (data[0].message === 'login success') {
+					location.href = './index.html';
+				}
 			})
 			.catch((err) => {
 				console.log(err);

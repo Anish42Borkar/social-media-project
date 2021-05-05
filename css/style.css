@@ -2,6 +2,7 @@
 	/* border: 2px solid green; */
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -49,26 +50,36 @@ body {
 	opacity: 0.6;
 }
 .profileinfo {
-	height: 15rem;
+	/* height: 15rem; */
 	/* border:2px solid black; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: black;
 	background-image: url("../Images/background.png");
 	background-repeat: no-repeat;
 	background-size: cover;
+	/* opacity: 0.2; */
+}
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem 0rem;
 }
 
 .profile_img {
-	width: 7.5rem;
-	height: 7.5rem;
+	width: 7rem;
+	height: 7rem;
 }
 
 .profile_img > img {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
+	margin: auto;
 }
 
 .username {
@@ -84,6 +95,18 @@ body {
 	border-radius: 1.2rem;
 }
 
+.follow-container {
+	font-size: 1.2rem;
+}
+
+.follow-container > span {
+	color: white;
+}
+
+.follow-container > span:first-child {
+	margin-right: 1rem;
+}
+
 .vid_abt {
 	/* margin: 1rem 0rem; */
 	display: flex;
@@ -92,6 +115,7 @@ body {
 	padding-bottom: 1rem;
 	/* border-bottom: 0.1rem solid rgb(204, 202, 202); */
 	background-color: white;
+	margin: 0.5rem 0rem;
 }
 
 .vid_abt > button {
@@ -203,4 +227,39 @@ body {
 
 .dropdown-menu {
 	width: 100%;
+}
+
+.admin-panel-center {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.admin-panel-card {
+	width: 8rem;
+	height: 8rem;
+	/* background-color: pink; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem;
+	color: white;
+	cursor: pointer;
+	border-radius: 1rem;
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	-ms-border-radius: 1rem;
+	-o-border-radius: 1rem;
+}
+
+.report {
+	background-image: linear-gradient(60deg, #fdc830, #f37335);
+}
+
+.post {
+	background-image: linear-gradient(60deg, #8360c3, #2ebf91);
+}
+
+.comments {
+	background-image: linear-gradient(60deg, #da4453, #89216b);
 }

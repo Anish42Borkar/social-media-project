@@ -52,5 +52,6 @@
     
     echo json_encode($response);
     mysqli_close($conn);
+
 ?>
 

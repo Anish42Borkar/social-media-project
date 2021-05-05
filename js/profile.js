@@ -17,47 +17,54 @@ const userPosts = {
 	index: document.querySelector('.index'),
 
 	async fetchPostData() {
-		console.log('hello');
-		const data = {
-			user: 'user',
-			pass: 'pass'
-		};
-
-		await fetchData('./fetchUserPost.php', data)
+		await fetchData('./api/profile.php', {})
 			.then((data) => {
-				console.log('heee2', data);
-				// console.log('heee3', dataObj);
+				let response = data[0];
+				console.log(response);
 
-				for (let value of data) {
-					console.log(data);
-					let profileInfo = `
-					    <div class="card">
-					       
-					        <div class="embed-responsive embed-responsive-21by9 video_container">
-					            <iframe class="video" src="${value.content}" ></iframe>
-					        </div>
+				if (response.message === 'No Session is Set') {
+					location.href = './login.html';
+				} else if (response.message === 'Invalid Method') {
+					alert('Invalid method of sending data to server');
+				} else if (response.message === 'No Record Found') {
+					console.log('you have no post to show');
+				} else if (response.message === 'Record Found') {
+					for (let value of response.body) {
+						// console.log(data);
+						let profileInfo = `
+							<div class="card">
 
-					        <div class="card-body">
+								<div class="embed-responsive embed-responsive-21by9 video_container">
+									<iframe class="video" src="${value.post}" ></iframe>
+								</div>
 
-					            <h5 class="card-title">poste title</h5>
-					            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="card-body">
 
-					            <div class="card_footer">
-					                <span class="post_icon"><i class="far fa-heart fa-2x"></i></span>
-					                <span class="post_icon"><i class="fab fa-telegram-plane fa-2x"></i></span>
-					                <span class="post_icon"><i class="far fa-comment fa-2x"></i></span>
-					            </div>
+									<h5 class="card-title">poste title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
-					        </div>
+									<div class="card_footer">
+										<span class="post_icon"><i class="far fa-heart fa-2x"></i></span>
+										<span class="post_icon"><i class="fab fa-telegram-plane fa-2x"></i></span>
+										<span class="post_icon"><i class="far fa-comment fa-2x"></i></span>
+									</div>
 
-					    </div>
-					`;
+								</div>
 
-					this.index.innerHTML += profileInfo;
+							</div>
+						`;
+
+						this.index.innerHTML += profileInfo;
+					}
+				} else {
+					console.log('somet');
+					alert('something went wrong');
 				}
+
+				// console.log('heee3', dataObj);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.message);
 			});
 	}
 };

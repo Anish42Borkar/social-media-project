@@ -1,6 +1,6 @@
 const fetchData = async (pageName, object) => {
 	const response = await fetch(pageName, {
-		method: 'post',
+		method: 'POST',
 		body: JSON.stringify(object),
 		headers: {
 			'content-Type': 'application/json'

@@ -41,7 +41,7 @@
             <li><a href="index.html">Home</a></li>
             <li class = "has-background-primary-light disable"><a href="profile.html">Profile</a></li>
             <li><a href="setting.html">Settings</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a class="logout">Logout</a></li>
             </ul>
         </aside>
 
@@ -49,15 +49,20 @@
         <div class="profileinfo">
 
             <div class="center">
-                <figure class="profile_img"><img src="Images/random.jpg"></figure>
+                <figure class="profile_img"><img src="Images/random.jpg"/></figure>
 
                 <h2 class="username">jester21</h2>
+
+                <div class="follow-container">
+                    <span class="followers">Followers <span class="followers-count">1m</span></span>
+                    <span class="following">Following <span class="following-count">1k</span></span>
+                </div>
 
             </div>
             <!-- <button type="button" class="btn btn-primary follow">Follow</button> -->
         </div>
         <!-- buttons for video and about -->
-        <div class="vid_abt">
+        <div class="vid_abt has-background-success-light">
             <button type="button" class="btn video_btn">Video</button>
             <button type="button" class="btn about_btn">About</button>
         </div>
