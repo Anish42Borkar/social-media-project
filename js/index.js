@@ -1,8 +1,11 @@
+const hideSelfLink = document.querySelector('.index-link-js');
+hideSelfLink.classList.add('has-background-primary-light', 'disable');
+
 const timelinePost = {
 	index: document.querySelector('.timeline'),
 
 	async fetchPostData() {
-		await fetchData('./api/profile.php', {})
+		await fetchData('./api/index.php', {})
 			.then((data) => {
 				let response = data[0];
 				console.log(response);

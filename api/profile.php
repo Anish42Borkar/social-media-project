@@ -1,11 +1,7 @@
 <?php
-
     include 'connect.php';
-    session_start();
-    $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
-
         if(isset($_SESSION['userName'])){
             $userId = $_SESSION['userId'];
             // $userId = 2;
@@ -22,35 +18,18 @@
                         'post'=>$row['p_content']
                     ));
                 }
-
-                array_push($response,array(
-                    'success'=>true,
-                    'message'=>"Record Found",
-                    'body'=>$userPost
-                ));
+                $response = response(array('status'=>false,'message'=>"Record Found","body"=>$userPost));
             }
             else{
-
-                array_push($response,array(
-                    'success'=>false,
-                    'message'=>"No Record Found"
-                ));
-                
+                $response = response(array('status'=>false,'message'=>"No Record Found","body"=>null)); 
             }
-
         }
         else{
-            array_push($response,array(
-                'success'=>false,
-                'message'=>"No Session is Set"
-            ));
+            $response = response(array('status'=>false,'message'=>"No Session is Set","body"=>null));
         }
     }
     else{
-        array_push($response,array(
-            'success'=>false,
-            'message'=>"Invalid Method"
-        ));
+        $response = response(array('status'=>false,'message'=>"Invalid Method","body"=>null));
     }
 
     echo json_encode($response);

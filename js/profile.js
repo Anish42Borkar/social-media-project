@@ -2,6 +2,9 @@ const videoBtn = document.querySelector('.video_btn');
 const aboutBtn = document.querySelector('.about_btn');
 const index = document.querySelector('.js-index');
 const aboutIndex = document.querySelector('.js-index-about');
+
+const hideSelfLink = document.querySelector('.profile-link-js');
+hideSelfLink.classList.add('has-background-primary-light', 'disable');
 // console.log('hii');
 
 videoBtn.addEventListener('click', () => {
@@ -29,6 +32,8 @@ const userPosts = {
 				} else if (response.message === 'No Record Found') {
 					console.log('you have no post to show');
 				} else if (response.message === 'Record Found') {
+					const username = document.querySelector('.username');
+					username.innerText = response.body[0].name;
 					for (let value of response.body) {
 						// console.log(data);
 						let profileInfo = `

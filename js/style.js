@@ -17,8 +17,6 @@ crossIcon.addEventListener('click', () => {
 
 //autocomplete dropdown list code
 
-const testObj = [ 'anish', 'damodar', 'reminson', 'simplico', 'jester', 'anish' ];
-
 const root = document.querySelector('.autocomplete');
 
 // this is for sending request for search

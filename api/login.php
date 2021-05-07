@@ -1,12 +1,9 @@
 <?php
-
     require_once('connect.php');
-    session_start();
 
     $json = file_get_contents('php://input');
     $data = json_decode($json,true);
 
-    $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $user = $data['user'];
@@ -17,37 +14,23 @@
         $check_user = mysqli_query($conn, "SELECT * FROM `user` WHERE `name`='$user' AND `password`='$pass'");
         $row = mysqli_fetch_array($check_user);
         $user_id = $row['u_id'];
-        $priority =$row['priority'];
+        $priority = $row['priority'];
 
         if (mysqli_num_rows($check_user) == 1){
 
             $_SESSION['userName'] = $row['name'];
             $_SESSION['userId'] = $user_id;
-            array_push($response, array(
-                'success' => true,
-                'message' => 'login success',
-                'body' => [$user_id, $priority]
+            $userInfo = array();
+            array_push($userInfo,array(
+                'userPriority'=>$priority
             ));
-
+            $response = response(array('status'=>false,'message'=>"login success","body"=>$userInfo));
         }else{
-
-            array_push($response, array(
-                'success' => false,
-                'message' => 'login Fail'
-            )); 
-
+            $response = response(array('status'=>false,'message'=>"login Fail","body"=>null));
         }
-
     }else{
-
-        array_push($response, array(
-            'success' => false,
-            'message' => 'invalid method'
-        )); 
+        $response = response(array('status'=>false,'message'=>"invalid method","body"=>null));
 
     }
-
-
     echo json_encode($response);
-
 ?>

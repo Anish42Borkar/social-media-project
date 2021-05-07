@@ -6,6 +6,7 @@ const fetchData = async (pageName, object) => {
 			'content-Type': 'application/json'
 		}
 	}).then((response) => {
+		console.log(response);
 		return response.json();
 	});
 

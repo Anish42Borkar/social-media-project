@@ -17,15 +17,19 @@ const login = {
 		};
 
 		await fetchData('./api/login.php', data)
-			.then((data) => {
-				console.log(data);
-				this.outputMsg.innerText = data[0].message;
-				if (data[0].message === 'login success') {
-					location.href = './index.html';
+			.then((response) => {
+				try {
+					console.log(response);
+					this.outputMsg.innerText = response[0].message;
+					if (response[0].message === 'login success') {
+						location.href = './index.php';
+					}
+				} catch (error) {
+					console.log(error);
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.message);
 			});
 	}
 };
@@ -45,7 +49,7 @@ const userRegisteration = {
 	userEmail: document.querySelector('.email_signup'),
 	outputMsg: document.querySelector('.out_msg'),
 
-	sendData() {
+	async sendData() {
 		const { userName, userPhone, userDOB, userPass, userEmail } = this;
 
 		const user = userName.value;
@@ -67,29 +71,15 @@ const userRegisteration = {
 			return;
 		}
 
-		fetch('./api/register.php', {
-			method: 'post',
-			body: JSON.stringify(data),
-			headers: {
-				'content-Type': 'application/json'
-			}
-		})
+		await fetchData('./api/register.php', data)
 			.then((response) => {
-				// console.log(response);
-				return response.text();
-			})
-			.then((data) => {
-				console.log(data);
-
-				this.outputMsg.innerText = data;
-				// location.href = './profile.html';
+				this.outputMsg.innerText = response[0].message;
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	}
 };
-
 userRegisteration.btnCreateUser.addEventListener('click', (event) => {
 	event.preventDefault();
 	userRegisteration.sendData();

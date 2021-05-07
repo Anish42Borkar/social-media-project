@@ -3,7 +3,6 @@
     $json = file_get_contents('php://input');
     $data = json_decode($json,true);
 
-    $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         $user = $data['searchTerm'];
@@ -13,45 +12,24 @@
             $sql = "SELECT * FROM user WHERE name LIKE '$user%'";
             $result = $conn->query($sql);
             if($result->num_rows > 0){
-
                 $userNames = array();
-
                 while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                     $userNames[]=$row["name"];
-                    
                 }
-                
-                array_push($response,array(
-                    'success'=>true,
-                    'message'=>"Record Found",
-                    'body'=>$userNames
-                ));
+                $response = response(array('status'=>false,'message'=>"Record Found","body"=>$userNames));
             }
             else{
-
-                array_push($response,array(
-                    'success'=>false,
-                    'message'=>"NO RECORDS FOUND"
-                ));
+                $response = response(array('status'=>false,'message'=>"NO RECORDS FOUND","body"=>null));
             }
         }
         else{
-            array_push($response,array(
-                'success'=>false,
-                'message'=>"No Value Pass"
-            ));
+            $response = response(array('status'=>false,'message'=>"No Value Pass","body"=>null));
         }
     }
     else{
-        array_push($response,array(
-            'success'=>false,
-            'message'=>"INVALID METHOD"
-        ));
+        $response = response(array('status'=>false,'message'=>"INVALID METHOD","body"=>null));
     }
-    
-    
     echo json_encode($response);
     mysqli_close($conn);
-
 ?>
 

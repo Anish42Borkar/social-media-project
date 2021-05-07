@@ -1,31 +1,15 @@
 <?php
-
     include 'connect.php';
-    session_start();
-    $response = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
         if(isset($_SESSION['userName'])){
             session_unset();
             session_destroy();
-            array_push($response,array(
-                'success'=>true,
-                'message'=>'Logout Successfull'
-            ));
+            $response = response(array('status'=>false,'message'=>"Logout Successfull","body"=>null));
         }else{
-            array_push($response,array(
-                'success'=>true,
-                'message'=>'Logout Already'
-            ));
+            $response = response(array('status'=>false,'message'=>"Logout Already","body"=>null));
         }
-
     }else{
-        array_push($response,array(
-            'success'=>false,
-            'message'=>'Invalid Method'
-        ));
+        $response = response(array('status'=>false,'message'=>"Invalid Method","body"=>null));
     }
-
     echo json_encode($response);
-
 ?>
