@@ -37,9 +37,12 @@ const followCheck = async (userName, follower, following) => {
 
 const profilePost = (root, response, ...rest) => {
 	// user, follower, following, followCheckRequest
-	if (rest[3]) followCheck(rest[0], rest[1], rest[2]);
-	const username = document.querySelector('.username');
-	username.innerText = response.body[0].name;
+	if (rest[3]) {
+		followCheck(rest[0], rest[1], rest[2]);
+		const username = document.querySelector('.username');
+		username.innerText = response.body[0].name;
+	}
+
 	for (let value of response.body) {
 		// console.log(data);
 		let profileInfo = `
@@ -107,4 +110,14 @@ const switchElementOneFunction = () => {
 	aboutBtn.addEventListener('click', () => {
 		switchElement(index, aboutIndex, false);
 	});
+};
+
+const minifyingResponseCode = (followCountRequire, root, response, ...rest) => {
+	// 'currentUser', this.follower, this.following, true
+	if (response.message === 'No Session is Set') location.href = './login.html';
+	else if (response.message === 'Invalid Method') alert('Invalid method of sending data to server');
+	else if (response.message === 'No Record Found') {
+		if (followCountRequire) followCheck(rest[0], rest[1], rest[2]);
+	} else if (response.message === 'Record Found') profilePost(root, response, rest[0], rest[1], rest[2], rest[3]);
+	else alert('something went wrong');
 };

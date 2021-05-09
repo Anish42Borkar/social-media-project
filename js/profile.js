@@ -14,15 +14,7 @@ const userPosts = {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })
 			.then((data) => {
 				let response = data[0];
-				console.log(response);
-
-				if (response.message === 'No Session is Set') location.href = './login.html';
-				else if (response.message === 'Invalid Method') alert('Invalid method of sending data to server');
-				else if (response.message === 'No Record Found')
-					followCheck('currentUser', this.follower, this.following);
-				else if (response.message === 'Record Found')
-					profilePost(this.index, response, 'currentUser', this.follower, this.following, true);
-				else alert('something went wrong');
+				minifyingResponseCode(true, this.index, response, 'currentUser', this.follower, this.following, true);
 			})
 			.catch((err) => {
 				console.log(err.message);

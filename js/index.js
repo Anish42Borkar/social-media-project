@@ -6,12 +6,11 @@ const timelinePost = {
 		await fetchData('./api/index.php', {})
 			.then((data) => {
 				let response = data[0];
-				if (response.message === 'No Session is Set') location.href = './login.html';
-				else if (response.message === 'Invalid Method') alert('Invalid method of sending data to server');
-				else if (response.message === 'No Record Found')
-					followCheck('currentUser', this.follower, this.following);
-				else if (response.message === 'Record Found') profilePost(index, response);
-				else alert('something went wrong');
+				try {
+					minifyingResponseCode(false, this.index, response);
+				} catch (error) {
+					console.log(error.message);
+				}
 			})
 			.catch((err) => {
 				console.log(err.message);
