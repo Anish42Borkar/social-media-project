@@ -35,6 +35,40 @@ const followCheck = async (userName, follower, following) => {
 	console.log(localStorage.getItem('currentUser'), localStorage.getItem('userName'));
 };
 
+const profilePost = (root, response, ...rest) => {
+	// user, follower, following, followCheckRequest
+	if (rest[3]) followCheck(rest[0], rest[1], rest[2]);
+	const username = document.querySelector('.username');
+	username.innerText = response.body[0].name;
+	for (let value of response.body) {
+		// console.log(data);
+		let profileInfo = `
+			<div class="card">
+
+				<div class="embed-responsive embed-responsive-21by9 video_container">
+					<iframe class="video" src="${value.post}" ></iframe>
+				</div>
+
+				<div class="card-body">
+
+					<h5 class="card-title">poste title</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+					<div class="card_footer">
+						<span class="post_icon"><i class="far fa-heart fa-2x"></i></span>
+						<span class="post_icon"><i class="fab fa-telegram-plane fa-2x"></i></span>
+						<span class="post_icon"><i class="far fa-comment fa-2x"></i></span>
+					</div>
+
+				</div>
+
+			</div>
+		`;
+
+		root.innerHTML += profileInfo;
+	}
+};
+
 const debounce = (fun, delay) => {
 	let timeout = 0;
 	return (...args) => {
@@ -59,4 +93,18 @@ const switchElement = (hide, show, bool) => {
 		hide.classList.add('hide');
 		// index.classList.remove('show');
 	}
+};
+
+const switchElementOneFunction = () => {
+	const videoBtn = document.querySelector('.video_btn');
+	const aboutBtn = document.querySelector('.about_btn');
+	const index = document.querySelector('.js-index');
+	const aboutIndex = document.querySelector('.js-index-about');
+
+	videoBtn.addEventListener('click', () => {
+		switchElement(aboutIndex, index, true);
+	});
+	aboutBtn.addEventListener('click', () => {
+		switchElement(index, aboutIndex, false);
+	});
 };
