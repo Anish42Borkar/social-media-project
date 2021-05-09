@@ -11,7 +11,7 @@ const userPosts = {
 	following: document.querySelector('.following-count'),
 
 	async fetchPostData() {
-		await fetchData('./api/profile.php', {})
+		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })
 			.then((data) => {
 				let response = data[0];
 				console.log(response);

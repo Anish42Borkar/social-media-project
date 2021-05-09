@@ -3,10 +3,10 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         if(isset($_SESSION['userName'])){
-            $userId = $_SESSION['userId'];
+            $userName = $data['userName'];
             // $userId = 2;
             $sql = "SELECT user.u_id,user.name,post.p_content from post,user where post.u_id = user.u_id AND 
-            user.u_id = '$userId'";
+            user.name = '$userName'";
             $result = $conn->query($sql);
 
             $userPost = array();

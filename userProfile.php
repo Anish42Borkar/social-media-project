@@ -19,6 +19,11 @@
 
                 <h1 class="username"></h1>
 
+                <div class="follow-container">
+                    <span class="followers">Followers <span class="followers-count">1m</span></span>
+                    <span class="following">Following <span class="following-count">1k</span></span>
+                </div>
+
                 <button type="button" class="btn btn-primary follow">Follow</button>
             </div>
             

@@ -41,7 +41,7 @@ const autoComplete = ({ search, root, fetchData }) => {
 					dropdown.classList.remove('is-active');
 					search.value = item;
 					localStorage.setItem('userName', item);
-					location.href = './userProfile.html';
+					location.href = './userProfile.php';
 					search.value = '';
 				});
 
