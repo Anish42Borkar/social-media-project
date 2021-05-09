@@ -32,9 +32,11 @@ const autoComplete = ({ search, root, fetchData }) => {
 			dropdown.classList.add('is-active');
 			const data = response[0].body;
 			console.log(data);
+
 			for (let item of data) {
 				const option = document.createElement('a');
 				option.classList.add('dropdown-item');
+
 				option.addEventListener('click', (event) => {
 					dropdown.classList.remove('is-active');
 					search.value = item;
@@ -42,6 +44,7 @@ const autoComplete = ({ search, root, fetchData }) => {
 					location.href = './userProfile.html';
 					search.value = '';
 				});
+
 				option.innerHTML = item;
 				wrapper.append(option);
 			}

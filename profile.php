@@ -37,18 +37,12 @@
 
         </div>
 
-
-
         <!-- about the customer -->
         <div class="index-about hide js-index-about">
             <h1>Description</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eius tempora cupiditate animi, neque corporis aut odio sapiente nam autem inventore facilis vitae adipisci quo ipsam sunt iste excepturi eum. Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Beatae explicabo atque error, quisquam perspiciatis corrupti pariatur repellat, id voluptas nemo saepe eaque omnis quidem fugiat illum dolore sunt, placeat iste?</p>
-            <!-- <ol class="about_links">
-                <li class="about_link"></li>
-                <li class="about_link"></li>
-                <li class="about_link"></li>
-            </ol> -->
+                adipisicing elit. Beatae explicabo atque error, quisquam perspiciatis corrupti pariatur repellat, id voluptas nemo saepe eaque omnis quidem fugiat illum dolore sunt, placeat iste?
+            </p>
         </div>
         <?php
             include 'scripts.php';

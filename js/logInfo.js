@@ -6,10 +6,10 @@ const login = {
 	outputMsg: document.querySelector('.out_msg'),
 
 	async sendData() {
-		const { userNameLogin, passLogin } = this;
+		// const { userNameLogin, passLogin } = this;
 
-		const user = userNameLogin.value;
-		const pass = passLogin.value;
+		const user = this.userNameLogin.value;
+		const pass = this.passLogin.value;
 
 		const data = {
 			user,
@@ -22,6 +22,7 @@ const login = {
 					console.log(response);
 					this.outputMsg.innerText = response[0].message;
 					if (response[0].message === 'login success') {
+						localStorage.setItem('currentUser', this.userNameLogin.value);
 						location.href = './index.php';
 					}
 				} catch (error) {

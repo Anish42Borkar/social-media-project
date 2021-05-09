@@ -3,21 +3,23 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         if(isset($_SESSION['userName'])){
-            $userId = $_SESSION['userId'];
-            // $userId = 8;
-            $fillowerSql = "SELECT COUNT(su_id) as follower FROM `follow` WHERE u_id = '$userId'";
-            $followingSql = "SELECT COUNT(u_id) as following FROM `follow` WHERE su_id = '$userId'";
+
+            $userName = $data['userName'];
+            // $userName = 'anish';
+            $fillowerSql = "SELECT COUNT(follow.su_id) as follower FROM follow WHERE follow.u_id = (SELECT user.u_id FROM user WHERE user.name = '$userName')";
+            $followingSql = "SELECT COUNT(follow.u_id) as following FROM follow WHERE follow.su_id = (SELECT user.u_id FROM user WHERE user.name = '$userName')";
 
             $follower = $conn->query($fillowerSql);
             $following = $conn->query($followingSql); 
 
             $result = $follower->fetch_array(MYSQLI_ASSOC);
             $result2 = $following->fetch_array(MYSQLI_ASSOC);
-            $obj = array(
+            $obj = array();
+            array_push($obj,array(
                 'follower'=>$result['follower'],
                 'following'=>$result2['following']
-            );
-            $response = response(array('status'=>false,'message'=>"Record Found","body"=>$obj)); 
+            ));
+            $response = response(array('status'=>true,'message'=>"Record Found","body"=>$obj)); 
         }
         else{
             $response = response(array('status'=>false,'message'=>"No Session is Set","body"=>null));

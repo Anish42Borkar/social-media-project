@@ -18,6 +18,8 @@ aboutBtn.addEventListener('click', () => {
 
 const userPosts = {
 	index: document.querySelector('.index'),
+	follower: document.querySelector('.followers-count'),
+	following: document.querySelector('.following-count'),
 
 	async fetchPostData() {
 		await fetchData('./api/profile.php', {})
@@ -25,13 +27,14 @@ const userPosts = {
 				let response = data[0];
 				console.log(response);
 
-				if (response.message === 'No Session is Set') {
-					location.href = './login.html';
-				} else if (response.message === 'Invalid Method') {
-					alert('Invalid method of sending data to server');
-				} else if (response.message === 'No Record Found') {
-					console.log('you have no post to show');
+				if (response.message === 'No Session is Set') location.href = './login.html';
+				else if (response.message === 'Invalid Method') alert('Invalid method of sending data to server');
+				else if (response.message === 'No Record Found') {
 				} else if (response.message === 'Record Found') {
+					followCheck('currentUser', this.follower, this.following);
+					followCheck('currentUser', this.follower, this.following);
+					let a = localStorage.getItem('currentUser');
+					console.log(a);
 					const username = document.querySelector('.username');
 					username.innerText = response.body[0].name;
 					for (let value of response.body) {
@@ -61,10 +64,7 @@ const userPosts = {
 
 						this.index.innerHTML += profileInfo;
 					}
-				} else {
-					console.log('somet');
-					alert('something went wrong');
-				}
+				} else alert('something went wrong');
 
 				// console.log('heee3', dataObj);
 			})

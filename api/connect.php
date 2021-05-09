@@ -1,5 +1,9 @@
 <?php
+    header("Content-Type: application/json");
     session_start();
+    $json = file_get_contents('php://input');
+    $data = json_decode($json,true);
+    
     $servrName = 'localhost';
     $userName = 'root';
     $userPassword = '';
@@ -11,7 +15,7 @@
     function response($input){
         $response = array();
         array_push($response ,array(
-            'success'=>$input['status'],
+            'status'=>$input['status'],
             'message'=>$input['message'],
             'body'=>$input['body']
         ));
