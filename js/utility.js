@@ -1,7 +1,7 @@
-const fetchData = async (pageName, object) => {
+const fetchData = async (pageName, object, ...rest) => {
 	const response = await fetch(pageName, {
 		method: 'POST',
-		body: JSON.stringify(object),
+		body: rest[0] ? rest[1] : JSON.stringify(object),
 		headers: {
 			'content-Type': 'application/json'
 		}

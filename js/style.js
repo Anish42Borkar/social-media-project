@@ -28,3 +28,10 @@ autoComplete({
 	root,
 	fetchData
 });
+
+// upload button code
+const uploadBtn = document.querySelector('.upload-icon');
+
+uploadBtn.addEventListener('click', () => {
+	location.href = './upload.php';
+});

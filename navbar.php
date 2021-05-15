@@ -17,7 +17,7 @@
         </div>
 
         <div class="con">
-            <div><i class="fas fa-cloud-upload-alt fa-2x"></i></div>
+            <div><i class="fas fa-cloud-upload-alt fa-2x upload-icon"></i></div>
             <div><i class="far fa-user fa-2x user_icon"></i> <i class="fas fa-times fa-2x user_cross_icon hide"></i></div>
         </div>
 
