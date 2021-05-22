@@ -17,13 +17,13 @@ const checkFollowerFollowing = async (userName) => {
 	const response = await fetchData('./api/follow.php', userName)
 		.then((response) => {
 			console.log(response);
-			return response[0];
+			return response;
 		})
 		.catch((err) => {
 			console.log(err);
 		});
 	if (response.status === false) return response.message;
-	return response.body[0];
+	return response.body;
 };
 
 const followCheck = async (userName, follower, following) => {
@@ -40,11 +40,11 @@ const profilePost = (root, response, ...rest) => {
 	if (rest[3]) {
 		followCheck(rest[0], rest[1], rest[2]);
 		const username = document.querySelector('.username');
-		username.innerText = response.body[0].name;
+		username.innerText = response.body.name;
 	}
 
-	for (let value of response.body) {
-		// console.log(data);
+	for (let value of response.body.post) {
+		console.log(value);
 		let profileInfo = `
 			<div class="card">
 

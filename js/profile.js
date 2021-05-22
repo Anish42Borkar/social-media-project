@@ -12,8 +12,7 @@ const userPosts = {
 
 	async fetchPostData() {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })
-			.then((data) => {
-				let response = data[0];
+			.then((response) => {
 				minifyingResponseCode(true, this.index, response, 'currentUser', this.follower, this.following, true);
 			})
 			.catch((err) => {

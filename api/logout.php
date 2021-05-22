@@ -4,12 +4,12 @@
         if(isset($_SESSION['userName'])){
             session_unset();
             session_destroy();
-            $response = response(array('status'=>false,'message'=>"Logout Successfull","body"=>null));
+            $response = array('status'=>false,'message'=>"Logout Successfull","body"=>null);
         }else{
-            $response = response(array('status'=>false,'message'=>"Logout Already","body"=>null));
+            $response = array('status'=>false,'message'=>"Logout Already","body"=>null);
         }
     }else{
-        $response = response(array('status'=>false,'message'=>"Invalid Method","body"=>null));
+        $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);
     }
     echo json_encode($response);
 ?>

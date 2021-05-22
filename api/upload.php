@@ -5,7 +5,7 @@
     echo '<pre>';
     print_r($_FILES);
 
-    $response = array();
+    // $response = array();
 
     function response($input){
         $response = array();
@@ -21,17 +21,9 @@
         'name'=>'name',
         'post'=>'p_content'
     ));
-    $val = array('post'=>$userPost);
-    print_r($val);
-    echo '<pre>';
-    print_r( json_encode(array(array('status'=>false,'message'=>"Record Found","body" =>$val))));
-    $v = array('status'=>false,'message'=>"Record Found","body" =>$val);
-    echo '<pre>';
-    echo json_encode(array('status'=>false,'message'=>"Record Found","body"=>$userPost));
-    echo '<pre>';
 
-    $array = array(array('hi'=>'h1','h1'=>'h1'),'hi'=>'ok');
-    echo '<pre>';
-    print_r(json_encode($v));
+    $response = array('status'=>true,'message'=>'success','body'=>array('post'=>$userPost,'check'=>true));
+    print_r(json_encode($response));
+    
 
 ?>

@@ -14,26 +14,27 @@ const autoComplete = ({ search, root, fetchData }) => {
 
 	const onInput = async (event) => {
 		const response = await fetchData('./api/search.php', { searchTerm: event.target.value });
-		console.log(response[0].message);
+		console.log(response.message);
+		console.log(response);
 		wrapper.innerHTML = '';
 
-		if (response[0].message === 'No Value Pass') {
+		if (response.message === 'No Value Pass') {
 			dropdown.classList.remove('is-active');
 		}
 
-		if (response[0].message === 'NO RECORDS FOUND') {
+		if (response.message === 'NO RECORDS FOUND') {
 			dropdown.classList.add('is-active');
 			const message = document.createElement('a');
 			message.innerHTML = response.message;
 			wrapper.append(message);
 		}
 
-		if (response[0].message === 'Record Found') {
+		if (response.message === 'Record Found') {
 			dropdown.classList.add('is-active');
-			const data = response[0].body;
-			console.log(data);
+			// const data = response.body;
+			console.log(response.body.userNames);
 
-			for (let item of data) {
+			for (let item of response.body.userNames) {
 				const option = document.createElement('a');
 				option.classList.add('dropdown-item');
 

@@ -21,5 +21,5 @@
         ));
         return $response;
     }
-    $response = array();
+    // $response = array();
 ?>

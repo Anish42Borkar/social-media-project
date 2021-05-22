@@ -11,25 +11,28 @@
 
             $userPost = array();
             if($result->num_rows > 0){
+                $name;
                 // echo json_encode($result);
                 while($row = $result->fetch_array(MYSQLI_ASSOC)){
+                    $name = $row['name'];
                     array_push($userPost,array(
-                        'name'=>$row['name'],
                         'post'=>$row['p_content']
                     ));
                 }
-                $response = response(array('status'=>false,'message'=>"Record Found","body"=>$userPost));
+                
+               
+                $response = array('status'=>false,'message'=>"Record Found","body"=>array('post'=>$userPost,'name'=>$name));
             }
             else{
-                $response = response(array('status'=>false,'message'=>"No Record Found","body"=>null)); 
+                $response = array('status'=>false,'message'=>"No Record Found","body"=>null); 
             }
         }
         else{
-            $response = response(array('status'=>false,'message'=>"No Session is Set","body"=>null));
+            $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
         }
     }
     else{
-        $response = response(array('status'=>false,'message'=>"Invalid Method","body"=>null));
+        $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);
     }
 
     echo json_encode($response);

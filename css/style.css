@@ -9,7 +9,7 @@ body {
 	background-color: rgb(255, 255, 254);
 	/* position: relative; */
 }
-
+/* use for nav bar only */
 .menubar {
 	display: flex;
 	justify-content: space-between;
@@ -45,10 +45,7 @@ body {
 	width: 100%;
 	height: 100%;
 }
-.disable {
-	pointer-events: none;
-	opacity: 0.6;
-}
+
 .profileinfo {
 	/* height: 15rem; */
 	/* border:2px solid black; */
@@ -107,6 +104,7 @@ body {
 	margin-right: 1rem;
 }
 
+/* use for video and about botton */
 .vid_abt {
 	/* margin: 1rem 0rem; */
 	display: flex;
@@ -123,6 +121,7 @@ body {
 	border: none;
 }
 
+/* index for timeline */
 .index {
 	/* height: 100vh; */
 	display: flex;
@@ -132,6 +131,14 @@ body {
 	/*flex-direction: column;*/
 }
 
+.timeline {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+/* card with user post and user detail  */
 .card {
 	margin: 1rem;
 	/*max-width: 1rem;*/
@@ -156,6 +163,7 @@ body {
 	margin: 0.4rem;
 }
 
+/* hide, show and disable reusable code  */
 .hide {
 	display: none !important;
 }
@@ -163,8 +171,12 @@ body {
 .show {
 	display: block;
 }
+.disable {
+	pointer-events: none;
+	opacity: 0.6;
+}
 
-/* setting lable */
+/* setting lable for setting page*/
 
 .setting_lable {
 	margin: 1rem 0rem;
@@ -202,13 +214,7 @@ body {
 	opacity: 0.8;
 }
 
-.timeline {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: center;
-}
-
+/* autocomplete for searching part */
 .autocomplete {
 	display: flex;
 	justify-content: center;
@@ -229,6 +235,7 @@ body {
 	width: 100%;
 }
 
+/* admin panle page  */
 .admin-panel-center {
 	display: flex;
 	justify-content: center;

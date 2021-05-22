@@ -4,9 +4,9 @@ const timelinePost = {
 	index: document.querySelector('.timeline'),
 	async fetchPostData() {
 		await fetchData('./api/index.php', {})
-			.then((data) => {
-				let response = data[0];
+			.then((response) => {
 				try {
+					console.log(response);
 					minifyingResponseCode(false, this.index, response);
 				} catch (error) {
 					console.log(error.message);

@@ -20,8 +20,8 @@ const login = {
 			.then((response) => {
 				try {
 					console.log(response);
-					this.outputMsg.innerText = response[0].message;
-					if (response[0].message === 'login success') {
+					this.outputMsg.innerText = response.message;
+					if (response.message === 'login success') {
 						localStorage.setItem('currentUser', this.userNameLogin.value);
 						location.href = './index.php';
 					}
@@ -74,7 +74,7 @@ const userRegisteration = {
 
 		await fetchData('./api/register.php', data)
 			.then((response) => {
-				this.outputMsg.innerText = response[0].message;
+				this.outputMsg.innerText = response.message;
 			})
 			.catch((err) => {
 				console.log(err);

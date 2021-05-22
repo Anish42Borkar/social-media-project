@@ -21,16 +21,16 @@
                     ));
                 }
                 if(count($followingsPost)){
-                    $response = response(array('status'=>true,'message'=>"Record Found","body"=>$followingsPost));
+                    $response = array('status'=>true,'message'=>"Record Found","body"=>array('post'=>$followingsPost));
                 }else{
-                    $response = response(array('status'=>false,'message'=>"No Record Found","body"=>null));
+                    $response = array('status'=>false,'message'=>"No Record Found","body"=>null);
                 }
             }
         }else{
-            $response = response(array('status'=>false,'message'=>"No Session is Set","body"=>null));
+            $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
         }
     }else{
-        $response = response(array('status'=>false,'message'=>"Invalid Method","body"=>null));
+        $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);
     }       
     
     echo json_encode($response);     

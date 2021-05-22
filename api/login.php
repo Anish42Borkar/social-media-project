@@ -23,15 +23,15 @@
             array_push($userInfo,array(
                 'userPriority'=>$priority
             ));
-            $response = response(array('status'=>true,'message'=>"login success","body"=>$userInfo));
+            $response = array('status'=>true,'message'=>"login success","body"=>array('post'=>$userInfo));
                 // $response['status'] = true;
                 // $response['message'] = "login success";
                 // $response['body'] = $userInfo;
         }else{
-            $response = response(array('status'=>false,'message'=>"login Fail","body"=>null));
+            $response = array('status'=>false,'message'=>"login Fail","body"=>null);
         }
     }else{
-        $response = response(array('status'=>false,'message'=>"invalid method","body"=>null));
+        $response = array('status'=>false,'message'=>"invalid method","body"=>null);
     }
     echo json_encode($response);
 ?>
