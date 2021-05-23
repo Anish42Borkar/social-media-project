@@ -98,6 +98,7 @@ const switchElement = (hide, show, bool) => {
 	}
 };
 
+// used for switching the element between video and about
 const switchElementOneFunction = () => {
 	const videoBtn = document.querySelector('.video_btn');
 	const aboutBtn = document.querySelector('.about_btn');
@@ -120,4 +121,8 @@ const minifyingResponseCode = (followCountRequire, root, response, ...rest) => {
 		if (followCountRequire) followCheck(rest[0], rest[1], rest[2]);
 	} else if (response.message === 'Record Found') profilePost(root, response, rest[0], rest[1], rest[2], rest[3]);
 	else alert('something went wrong');
+};
+
+const videoPlayer = (link) => {
+	return `<video src="${link}" id = "my-video" class = "video-js"  controls></video>`;
 };

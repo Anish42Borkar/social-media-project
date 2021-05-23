@@ -51,7 +51,7 @@ function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoC
 		reader.addEventListener('load', (event) => {
 			const fileContent = event.target.result;
 			if (videoCheck) {
-				previewParent.innerHTML = `<video src="${fileContent}" id = "my-video" class = "video-js"  controls></video>`;
+				previewParent.innerHTML = videoPlayer(fileContent);
 				formData.append('fileVideo', file.files[0]);
 			} else {
 				previewParent.innerHTML = `<img class = "image-preview" alt="" src = "${fileContent}" >`;
@@ -89,7 +89,7 @@ previewVideoFile.addEventListener('change', () => {
 
 submitbtn.addEventListener('click', () => {
 	if (!(previewImageFile.files.length > 0 && previewVideoFile.files.length > 0)) {
-		swal('Good job!', 'You clicked the button!', 'error');
+		swal('Error!', 'You need to select both file!', 'error');
 		return false;
 	}
 	fetch('./api/upload.php', {

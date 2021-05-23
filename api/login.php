@@ -1,13 +1,8 @@
 <?php
     require_once('connect.php');
-
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
         $user = $data['user'];
         $pass = $data['pass'];
-
-        // $user = 'anish';
-        // $pass = 1234;
 
         $check_user = mysqli_query($conn, "SELECT * FROM `user` WHERE `name`='$user' AND `password`='$pass' LIMIT 1");
         $row = mysqli_fetch_array($check_user);
@@ -24,14 +19,7 @@
                 'userPriority'=>$priority
             ));
             $response = array('status'=>true,'message'=>"login success","body"=>array('post'=>$userInfo));
-                // $response['status'] = true;
-                // $response['message'] = "login success";
-                // $response['body'] = $userInfo;
-        }else{
-            $response = array('status'=>false,'message'=>"login Fail","body"=>null);
-        }
-    }else{
-        $response = array('status'=>false,'message'=>"invalid method","body"=>null);
-    }
+        }else $response = array('status'=>false,'message'=>"login Fail","body"=>null);
+    }else $response = array('status'=>false,'message'=>"invalid method","body"=>null);
     echo json_encode($response);
 ?>

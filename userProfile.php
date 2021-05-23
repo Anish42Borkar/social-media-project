@@ -25,6 +25,7 @@
                 </div>
 
                 <button type="button" class="btn btn-primary follow">Follow</button>
+                <button type="button" class="btn btn-primary unfollow">Unfollow</button>
             </div>
             
         </div>

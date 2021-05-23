@@ -1,8 +1,8 @@
 <?php
     header("Content-Type: application/json");
     session_start();
-    $json = file_get_contents('php://input');
-    $data = json_decode($json,true);
+    
+    $data = json_decode(file_get_contents('php://input'),true);
     
     $servrName = 'localhost';
     $userName = 'root';
@@ -11,15 +11,15 @@
     //create connection
     $conn = new Mysqli($servrName,$userName,$userPassword,$dbName);
 
-    
-    function response($input){
-        $response = array();
-        array_push($response ,array(
-            'status'=>$input['status'],
-            'message'=>$input['message'],
-            'body'=>$input['body']
-        ));
-        return $response;
+    function checkNoOfRows($input){
+        if($input->num_rows) return true;
+        return false;
     }
-    // $response = array();
+
+    function checkFollowingOrNot($currentUser,$differentUser,$conn){
+        $sql = "SELECT follow.u_id FROM follow WHERE follow.su_id = (SELECT user.u_id from user where user.name = '$currentUser') and follow.u_id = (SELECT user.u_id FROM user WHERE user.name = '$differentUser') LIMIT 1";
+        $result = $conn->query($sql);
+        if(checkNoOfRows($result)) return true;
+        false;
+    }
 ?>

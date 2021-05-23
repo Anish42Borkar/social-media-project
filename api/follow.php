@@ -14,20 +14,12 @@
 
             $result = $follower->fetch_array(MYSQLI_ASSOC);
             $result2 = $following->fetch_array(MYSQLI_ASSOC);
-            // $obj = array();
-            // array_push($obj,array(
-                
-                
-            // ));
+        
             $response = array('status'=>true,'message'=>"Record Found","body"=>array('follower'=>$result['follower'],'following'=>$result2['following'])); 
         }
-        else{
-            $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
-        }
+        else $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
     }
-    else{
-        $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);
-    }
+    else $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);
 
     echo json_encode($response);
     mysqli_close($conn);
