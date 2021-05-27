@@ -5,6 +5,7 @@
 
     // $imagePath = "uploads/".basename($_FILES['fileImage']['name']);
     // move_uploaded_file($_FILES['fileImage']['tmp_name'],$imagePath);
-    echo '<pre>';
-    print_r($_FILES);
+    // echo '<pre>';
+    echo json_encode($_FILES);
+    
 ?>

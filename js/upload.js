@@ -97,6 +97,10 @@ submitbtn.addEventListener('click', () => {
 		body: formData
 	})
 		.then((response) => {
+			return response.json();
+		})
+		.then((response) => {
+			console.log(response);
 			swal('Good job!', 'You clicked the button!', 'success');
 		})
 		.catch(console.error);

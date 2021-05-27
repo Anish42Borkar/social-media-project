@@ -13,10 +13,11 @@
                     'post'=>$row['p_content']
                 ));
             }
-            if(checkNoOfRows($followingsPost)){
-                $response = array('status'=>true,'message'=>(checkNoOfRows($followingsPost) ? "Record Found" : "No Record Found"),"body"=>(checkNoOfRows($followingsPost) ? array('post'=>$followingsPost) : null));
+            if(checkNoOfRows($result))
+                $response = array('status'=>true,'message'=>(checkNoOfRows($result) ? "Record Found" : "No Record Found"),"body"=>(checkNoOfRows($result) ? array('post'=>$followingsPost) : null));
         }else $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
     }else $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);  
     
-    echo json_encode($response);     
+    echo json_encode($response);
+    mysqli_close($conn);   
 ?>
