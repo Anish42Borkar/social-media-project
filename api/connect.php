@@ -22,5 +22,5 @@
         if(checkNoOfRows($result)) return true;
         false;
     }
-    $response;
+    $response = '';
 ?>

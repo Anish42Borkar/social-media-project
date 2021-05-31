@@ -8,7 +8,7 @@
         $email = $data['email'];
         $check_user = mysqli_query($conn, "SELECT * FROM `user` WHERE `name`='$name'");
 
-        if(mysqli_num_rows($check_user) == 1) $response = response(array('status'=>false,'message'=>"User already exist","body"=>null));
+        if(mysqli_num_rows($check_user) == 1) $response = array('status'=>false,'message'=>"User already exist","body"=>null);
         else{
             $priority = "user";
             $register = mysqli_query($conn, "INSERT INTO `user` (`u_id`, `name`, `ph_no`, `email`, `dob`, `password`, `priority`) VALUES (NULL, '$name', '$phone', '$email', '$DOB', '$pass', '$priority')");
@@ -17,9 +17,9 @@
             $row = mysqli_fetch_array($fetch_user);
 
             $user_id = $row['u_id'];
-            $response = response(array('status'=>true,'message'=>"Registered Success","body"=>null));
+            $response = array('status'=>true,'message'=>"Registered Success","body"=>null);
         }
-    }else $response = response(array('status'=>false,'message'=>"INVALID METHOD","body"=>null));
+    }else $response = array('status'=>false,'message'=>"INVALID METHOD","body"=>null);
     echo json_encode($response);
     mysqli_close($conn);
 ?>

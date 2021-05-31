@@ -1,5 +1,8 @@
 <?php
-
+    session_start();
+    if(!isset($_SESSION['userName'])){
+        header('Location:login.html');
+    }
     echo '
         <head>
         <meta charset="UTF-8">

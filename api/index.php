@@ -1,17 +1,28 @@
 <?php
     include 'connect.php';
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
         if(isset($_SESSION['userName'])){
 
             $userId = $_SESSION['userId'];
+            // $userId = 2;
+
             $followingsPost = array();
-            $fetchFollowingsPost = "SELECT post.p_content from post WHERE post.u_id IN (SELECT u_id FROM follow WHERE su_id = '$userId')";
-            
-            $result = $conn->query($fetchFollowingsPost);
+            $checkFollowing = "SELECT u_id FROM follow WHERE su_id = '$userId'";
+            $result = $conn->query($checkFollowing);
             while($row = $result->fetch_array(MYSQLI_ASSOC)){
-                array_push($followingsPost,array(
-                    'post'=>$row['p_content']
-                ));
+                $id = $row['u_id'];
+
+                $fetchFollowingsPost = "SELECT * from post WHERE post.u_id = '$id' ORDER BY `p_id` DESC LIMIT 3";
+
+                $result2 = $conn->query($fetchFollowingsPost);
+                while($row2 = $result2->fetch_array(MYSQLI_ASSOC)){
+                    array_push($followingsPost,array(
+                        'post'=>$row2['p_content'],
+                        'id'=>$row2['u_id'],
+                        'pId'=>$row2['p_id']
+                    ));
+                }
             }
             if(checkNoOfRows($result))
                 $response = array('status'=>true,'message'=>(checkNoOfRows($result) ? "Record Found" : "No Record Found"),"body"=>(checkNoOfRows($result) ? array('post'=>$followingsPost) : null));
