@@ -1,0 +1,20 @@
+/* autocomplete for searching part */
+.autocomplete {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 100vw;
+	top: 10%;
+	z-index: 2;
+	background-color: pink;
+}
+.result {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+.dropdown-menu {
+	width: 100%;
+}

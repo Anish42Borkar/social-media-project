@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   
-  <?php
-    include 'header.php';
-  ?>
+    <?php
+      include 'header.php';
+    ?>
   <body>
 
     <?php
@@ -19,23 +19,19 @@
     <section class="section">
       <div class="container setting_center_container">
 
-        <div class="setting_image_overlay">
-          <figure class="image is-128x128 setting_elements_margin setting_user_profile">
-            <img class="is-rounded" src="https://images.unsplash.com/photo-1484608856193-968d2be4080e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80">
-          </figure>
-          <div class="setting_overlay_icon">
-            <i class="far fa-edit fa-2x"></i>
-          </div>
+        <div class="wrapper setting_elements_margin">
+
+          <input type="file" name="" class="my_file">
+          
         
         </div>
+        <!-- <img class="is-rounded" src="https://images.unsplash.com/photo-1484608856193-968d2be4080e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"> -->
+        
+        <div class="wrapper2 setting_elements_margin">
 
-        <div class="setting_image_overlay">
-          <figure class="image is-128x128 setting_elements_margin setting_user_profile">
-            <img src="https://images.unsplash.com/photo-1618442928313-0b8afa050a57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80">
-          </figure>
-          <div class="setting_overlay_icon">
-            <i class="far fa-edit fa-2x"></i>
-          </div>
+          <input type="file" name="" class="my_file">
+          
+        
         </div>
 
         <input class="input is-primary setting_elements_margin" type="text" placeholder="Enter new user name">

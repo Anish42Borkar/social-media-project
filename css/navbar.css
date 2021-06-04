@@ -1,0 +1,36 @@
+/* use for nav bar only */
+.menubar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3rem;
+	background-color: hsl(171, 100%, 41%);
+}
+
+.search {
+	border-radius: 10px;
+	outline: none;
+	border-width: 0;
+	padding: 0.2rem;
+	font-size: 1rem;
+}
+
+.con {
+	display: flex;
+	justify-content: space-between;
+	/* width: 7rem; */
+}
+
+.con > div:first-child {
+	margin-right: 1rem;
+}
+
+.icon {
+	height: 2.7rem;
+	width: 2.7rem;
+}
+
+.icon > img {
+	width: 100%;
+	height: 100%;
+}

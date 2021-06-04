@@ -43,6 +43,8 @@ const profilePost = (root, response, ...rest) => {
 		username.innerText = response.body.name;
 	}
 
+	if (response.body.post == '') return false;
+
 	for (let value of response.body.post) {
 		console.log(value);
 		let profileInfo = `
@@ -117,9 +119,8 @@ const minifyingResponseCode = (followCountRequire, root, response, ...rest) => {
 	// 'currentUser', this.follower, this.following, true
 	if (response.message === 'No Session is Set') location.href = './login.html';
 	else if (response.message === 'Invalid Method') alert('Invalid method of sending data to server');
-	else if (response.message === 'No Record Found') {
-		if (followCountRequire) followCheck(rest[0], rest[1], rest[2]);
-	} else if (response.message === 'Record Found') profilePost(root, response, rest[0], rest[1], rest[2], rest[3]);
+	else if (response.message === 'Record Found' || response.message === 'No Record Found')
+		profilePost(root, response, rest[0], rest[1], rest[2], rest[3]);
 	else alert('something went wrong');
 };
 

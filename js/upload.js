@@ -30,7 +30,7 @@ const formData = new FormData();
 function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoCheck, fileParent) {
 	if (!CheckExtenctions.exec(file.value)) {
 		alert('invalid file type');
-		fileTitle.textContent = 'Invalid File Type';
+		fileTitle.textContent = `${CheckExtenctions} are allowed`;
 		fileParent.classList.add('is-danger');
 		fileParent.classList.remove('is-success');
 		previewParent.classList.add('hide');
@@ -87,11 +87,48 @@ previewVideoFile.addEventListener('change', () => {
 	displayPreview(allowedExtensionsVideos, previewVideoParent, previewVideoFile, videoName, true, videoFileParent);
 });
 
+// variables to store text content
+
+const postTitle = document.querySelector('.post_title');
+const postDesc = document.querySelector('.post_desc');
+
+function formValidate(form, name) {
+	const sibbling = form.nextElementSibling;
+	if (form.value === '') {
+		form.classList.remove('is-warning');
+		form.classList.remove('is-success');
+		form.classList.add('is-danger');
+		sibbling.classList.remove('hide');
+		sibbling.value = 'Cannot be null';
+	} else {
+		form.classList.remove('is-warning');
+		form.classList.remove('is-danger');
+		form.classList.add('is-success');
+		sibbling.classList.add('hide');
+		formData.append(name, form.value);
+	}
+}
+
 submitbtn.addEventListener('click', () => {
-	if (!(previewImageFile.files.length > 0 && previewVideoFile.files.length > 0)) {
-		swal('Error!', 'You need to select both file!', 'error');
+	formValidate(postTitle, 'postTitle');
+	formValidate(postDesc, 'postDesc');
+	if (
+		!(
+			previewImageFile.files.length > 0 &&
+			previewVideoFile.files.length > 0 &&
+			postTitle.value !== '' &&
+			postDesc.value !== ''
+		)
+	) {
+		swal('Error!', 'You need to select both the files and fill the form!', 'error');
 		return false;
 	}
+	let object = {};
+	formData.forEach(function(value, key) {
+		object[key] = value;
+	});
+	// let json = JSON.stringify(object);
+	console.log(object);
 	fetch('./api/upload.php', {
 		method: 'post',
 		body: formData
@@ -105,3 +142,23 @@ submitbtn.addEventListener('click', () => {
 		})
 		.catch(console.error);
 });
+
+// const sheet = new CSSStyleSheet();
+// sheet.replaceSync('* {transition: all 2s}');
+// document.adoptedStyleSheets = [sheet];
+
+// const bd = document.body.children;
+// const cn = document.querySelector('.container').children;
+// const file = document.querySelector('.file').children;
+// console.log(bd);
+// console.log(cn);
+// const allEls = [...bd,...cn,...file];
+// setInterval(()=>{
+//     for(let el of allEls){
+//         const rotation = Math.floor(Math.random() * 360);
+//         const x = Math.floor(document.body.clientWidth * Math.random());
+//         const y = Math.floor(document.body.clientHeight * Math.random());
+//         el.style.transform = `translate(${x}px,${y}px) rotate(${rotation}deg)`;
+//     }
+//     console.log("hi");
+// },2000);

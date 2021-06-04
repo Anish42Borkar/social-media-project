@@ -24,8 +24,8 @@
                     ));
                 }
             }
-            if(checkNoOfRows($result))
-                $response = array('status'=>true,'message'=>(checkNoOfRows($result) ? "Record Found" : "No Record Found"),"body"=>(checkNoOfRows($result) ? array('post'=>$followingsPost) : null));
+            
+            $response = array('status'=>true,'message'=>(checkNoOfRows($result) ? "Record Found" : "No Record Found"),"body"=>(checkNoOfRows($result) ? array('post'=>$followingsPost) : null));
         }else $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
     }else $response = array('status'=>false,'message'=>"Invalid Method","body"=>null);  
     

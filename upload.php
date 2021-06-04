@@ -18,48 +18,78 @@
 
         <section class="section">
             <div class="container setting_center_container">
-                <!-- <span class="tag is-primary is-medium">Upload Video Here</span> -->
-                <div class="upload-media upload-video hide">
+                
+                <div class="folde">
+                
+                    <!-- <span class="tag is-primary is-medium">Upload Video Here</span> -->
+                    <div class="upload_files">
+                        <div class="upload-media upload-video hide">
+                        
+                        </div>
+        
+                        <div class="file file-video is-large  is-boxed has-name upload-file">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                    <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Upload Video...
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                </span>
+                            </label>
+                        </div>
+        
+        
+                        <!-- <span class="tag is-primary is-medium">Upload Thumnail Here</span> -->
+                        <div class="upload-media upload-image hide">
+                            
+                        </div>
+                        <div class="file file-thumnail is-large  is-boxed has-name upload-file">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="resume">
+                                    <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Upload Thumbnail
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                </span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="upload_text_folde">
                     
-                </div>
+                        <div class="upload_text">
+                            <div class="field">
+                                <label class="label">Title</label>
+                                <div class="control">
+                                    <input class="input is-warning post_title" type="text" placeholder="Write your title here">
+                                    <p class="help hide">This username is available</p>
+                                </div>
+                            </div>
 
-                <div class="file file-video is-large  is-boxed has-name upload-file">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                            <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Upload Video...
-                            </span>
-                        </span>
-                        <span class="file-name">
-                            Screen Shot 2017-07-29 at 15.54.25.png
-                        </span>
-                    </label>
-                </div>
-
-
-                <!-- <span class="tag is-primary is-medium">Upload Thumnail Here</span> -->
-                <div class="upload-media upload-image hide">
+                            <div class="field">
+                                <label class="label">Description</label>
+                                <div class="control">
+                                    <textarea class="textarea is-warning post_desc" placeholder="Write the post description here"></textarea>
+                                    <p class="help hide">This username is available</p>
+                                </div>
+                            </div>
+                        </div>
                     
-                </div>
-                <div class="file file-thumnail is-large  is-boxed has-name upload-file">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                            <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Upload Thumbnail
-                            </span>
-                        </span>
-                        <span class="file-name">
-                            Screen Shot 2017-07-29 at 15.54.25.png
-                        </span>
-                    </label>
+                    </div>
+
                 </div>
 
                 <div class="buttons upload-btn">

@@ -1,9 +1,21 @@
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add('right-panel-active');
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove('right-panel-active');
+});
+
 //this is to login user
 const login = {
 	btnLogin: document.querySelector('.login'),
 	userNameLogin: document.querySelector('.userName_login'),
 	passLogin: document.querySelector('.pass_login'),
-	outputMsg: document.querySelector('.out_msg'),
+	// outputMsg: document.querySelector('.out_msg'),
 
 	async sendData() {
 		// const { userNameLogin, passLogin } = this;
@@ -15,15 +27,19 @@ const login = {
 			user,
 			pass
 		};
-
+		console.log(data);
 		await fetchData('./api/login.php', data)
 			.then((response) => {
 				try {
 					console.log(response);
-					this.outputMsg.innerText = response.message;
+
 					if (response.message === 'login success') {
 						localStorage.setItem('currentUser', this.userNameLogin.value);
-						location.href = './index.php';
+						swal('You have successfully loged in').then((value) => {
+							location.href = './index.php';
+						});
+					} else {
+						swal('You have entered wrong user name or password');
 					}
 				} catch (error) {
 					console.log(error);
@@ -48,7 +64,7 @@ const userRegisteration = {
 	userDOB: document.querySelector('.userDate_signup'),
 	userPass: document.querySelector('.pass_signup'),
 	userEmail: document.querySelector('.email_signup'),
-	outputMsg: document.querySelector('.out_msg'),
+	// outputMsg: document.querySelector('.out_msg'),
 
 	async sendData() {
 		const { userName, userPhone, userDOB, userPass, userEmail } = this;
@@ -66,15 +82,18 @@ const userRegisteration = {
 			DOB,
 			email
 		};
-
+		console.log(data);
 		if (!checkNull(user, pass, phone, DOB, email)) {
-			this.outputMsg.innerText = 'All fields are required';
+			swal('All the feilds are important please fill.');
 			return;
 		}
 
 		await fetchData('./api/register.php', data)
 			.then((response) => {
-				this.outputMsg.innerText = response.message;
+				if (response.message === 'Registered Success')
+					swal('You have successfully registered').then((value) => {
+						location.href = './login.html';
+					});
 			})
 			.catch((err) => {
 				console.log(err);
