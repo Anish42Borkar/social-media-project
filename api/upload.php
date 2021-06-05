@@ -6,6 +6,10 @@
     // $imagePath = "uploads/".basename($_FILES['fileImage']['name']);
     // move_uploaded_file($_FILES['fileImage']['tmp_name'],$imagePath);
     // echo '<pre>';
-    echo json_encode($_FILES['fileVideo']);
+    // echo json_encode($_FILES['fileVideo']);
+
+    echo 'hi';
+    // exit();
+    echo 'yes';
     
 ?>

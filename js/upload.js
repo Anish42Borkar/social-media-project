@@ -123,10 +123,7 @@ submitbtn.addEventListener('click', () => {
 		swal('Error!', 'You need to select both the files and fill the form!', 'error');
 		return false;
 	}
-	let object = {};
-	formData.forEach(function(value, key) {
-		object[key] = value;
-	});
+
 	// let json = JSON.stringify(object);
 	console.log(object);
 	fetch('./api/upload.php', {

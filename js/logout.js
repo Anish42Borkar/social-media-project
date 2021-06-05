@@ -5,7 +5,7 @@ const logout = {
 		await fetchData('./api/logout.php', {})
 			.then((response) => {
 				if (response.message === 'Logout Successfull') {
-					location.href = './login.html';
+					location.href = './login.php';
 				} else {
 					console.log('something went wrong');
 				}

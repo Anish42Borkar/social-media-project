@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,12 @@
         <link rel="stylesheet" href="loginForm.css">
     </head>
     <body>
+        <?php
+            session_start();
+            if(isset($_SESSION['userName'])){
+                header('Location:index.php');
+            }
+        ?>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form action="#">

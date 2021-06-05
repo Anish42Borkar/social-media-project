@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['userName'])){
-        header('Location:login.html');
+        header('Location:login.php');
     }
     echo '
         <head>

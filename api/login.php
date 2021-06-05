@@ -1,6 +1,7 @@
 <?php
     require_once('connect.php');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
         $user = $data['user'];
         $pass = $data['pass'];
 
