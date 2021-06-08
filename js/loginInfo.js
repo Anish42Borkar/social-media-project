@@ -1,6 +1,6 @@
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+const signUpButton = _target('#signUp');
+const signInButton = _target('#signIn');
+const container = _target('#container');
 
 signUpButton.addEventListener('click', () => {
 	container.classList.add('right-panel-active');
@@ -12,9 +12,9 @@ signInButton.addEventListener('click', () => {
 
 //this is to login user
 const login = {
-	btnLogin: document.querySelector('.login'),
-	userNameLogin: document.querySelector('.userName_login'),
-	passLogin: document.querySelector('.pass_login'),
+	btnLogin: _target('.login'),
+	userNameLogin: _target('.userName_login'),
+	passLogin: _target('.pass_login'),
 	// outputMsg: document.querySelector('.out_msg'),
 
 	async sendData() {
@@ -58,12 +58,12 @@ login.btnLogin.addEventListener('click', (event) => {
 
 //this for sending user information to register in the database
 const userRegisteration = {
-	btnCreateUser: document.querySelector('.userRegistration'),
-	userName: document.querySelector('.userName_signup'),
-	userPhone: document.querySelector('.userPhone_signup'),
-	userDOB: document.querySelector('.userDate_signup'),
-	userPass: document.querySelector('.pass_signup'),
-	userEmail: document.querySelector('.email_signup'),
+	btnCreateUser: _target('.userRegistration'),
+	userName: _target('.userName_signup'),
+	userPhone: _target('.userPhone_signup'),
+	userDOB: _target('.userDate_signup'),
+	userPass: _target('.pass_signup'),
+	userEmail: _target('.email_signup'),
 	// outputMsg: document.querySelector('.out_msg'),
 
 	async sendData() {

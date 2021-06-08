@@ -1,5 +1,5 @@
 const logout = {
-	logout: document.querySelector('.logout'),
+	logout: _target('.logout'),
 
 	async sendData() {
 		await fetchData('./api/logout.php', {})

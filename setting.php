@@ -19,7 +19,7 @@
     <section class="section">
       <div class="container setting_center_container">
 
-        <div class="wrapper setting_elements_margin">
+        <div class="wrapper1 setting_elements_margin">
 
           <input type="file" name="" class="my_file">
           

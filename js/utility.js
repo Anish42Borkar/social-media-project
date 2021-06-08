@@ -39,7 +39,7 @@ const profilePost = (root, response, ...rest) => {
 	// user, follower, following, followCheckRequest
 	if (rest[3]) {
 		followCheck(rest[0], rest[1], rest[2]);
-		const username = document.querySelector('.username');
+		const username = _target('.username');
 		username.innerText = response.body.name;
 	}
 
@@ -102,10 +102,10 @@ const switchElement = (hide, show, bool) => {
 
 // used for switching the element between video and about
 const switchElementOneFunction = () => {
-	const videoBtn = document.querySelector('.video_btn');
-	const aboutBtn = document.querySelector('.about_btn');
-	const index = document.querySelector('.js-index');
-	const aboutIndex = document.querySelector('.js-index-about');
+	const videoBtn = _target('.video_btn');
+	const aboutBtn = _target('.about_btn');
+	const index = _target('.js-index');
+	const aboutIndex = _target('.js-index-about');
 
 	videoBtn.addEventListener('click', () => {
 		switchElement(aboutIndex, index, true);
@@ -127,3 +127,7 @@ const minifyingResponseCode = (followCountRequire, root, response, ...rest) => {
 const videoPlayer = (link) => {
 	return `<video src="${link}" id = "my-video" class = "video-js"  controls></video>`;
 };
+
+function _target(target) {
+	return document.querySelector(target);
+}

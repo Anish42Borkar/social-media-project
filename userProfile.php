@@ -24,15 +24,15 @@
                     <span class="following">Following <span class="following-count">1k</span></span>
                 </div>
 
-                <button type="button" class="btn btn-primary follow common_js_class">Follow</button>
-                <button type="button" class="btn btn-primary unfollow common_js_class1">Unfollow</button>
+                <button type="button" class="button is-info is-rounded follow common_js_class">Follow</button>
+                <button type="button" class="button is-info is-rounded unfollow common_js_class1">Unfollow</button>
             </div>
             
         </div>
         <!-- buttons for video and about -->
         <div class="vid_abt has-background-success-light">
-            <button type="button" class="btn video_btn">Video</button>
-            <button type="button" class="btn about_btn">About</button>
+            <button type="button" class="button is-ghost video_btn">Video</button>
+            <button type="button" class="button is-ghost about_btn">About</button>
         </div>
         <!-- all post of the users  -->
         <div class="index js-index">

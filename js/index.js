@@ -1,7 +1,7 @@
-const hideSelfLink = document.querySelector('.index-link-js');
+const hideSelfLink = _target('.index-link-js');
 hideSelfLink.classList.add('has-background-primary-light', 'disable');
 const timelinePost = {
-	index: document.querySelector('.timeline'),
+	index: _target('.timeline'),
 	async fetchPostData() {
 		await fetchData('./api/index.php', {})
 			.then((response) => {

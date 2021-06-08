@@ -6,9 +6,9 @@ hideSelfLink.classList.add('has-background-primary-light', 'disable');
 // obj for retriving data from db of users
 
 const userPosts = {
-	index: document.querySelector('.index'),
-	follower: document.querySelector('.followers-count'),
-	following: document.querySelector('.following-count'),
+	index: _target('.index'),
+	follower: _target('.followers-count'),
+	following: _target('.following-count'),
 
 	async fetchPostData() {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })

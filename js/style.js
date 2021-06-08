@@ -1,6 +1,6 @@
-const crossIcon = document.querySelector('.user_cross_icon');
-const userIcon = document.querySelector('.user_icon');
-const hamberger = document.querySelector('.js-list');
+const crossIcon = _target('.user_cross_icon');
+const userIcon = _target('.user_icon');
+const hamberger = _target('.js-list');
 userIcon.addEventListener('click', () => {
 	// dropdown.classList.add('show');
 	hamberger.classList.toggle('hide');
@@ -17,11 +17,11 @@ crossIcon.addEventListener('click', () => {
 
 //autocomplete dropdown list code
 
-const root = document.querySelector('.autocomplete');
+const root = _target('.autocomplete');
 
 // this is for sending request for search
 
-const search = document.querySelector('.search');
+const search = _target('.search');
 
 autoComplete({
 	search,
@@ -30,8 +30,7 @@ autoComplete({
 });
 
 // upload button code
-const uploadBtn = document.querySelector('.upload-icon');
 
-uploadBtn.addEventListener('click', () => {
+_target('.upload-icon').addEventListener('click', () => {
 	location.href = './upload.php';
 });

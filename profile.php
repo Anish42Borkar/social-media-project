@@ -29,8 +29,8 @@
         </div>
         <!-- buttons for video and about -->
         <div class="vid_abt has-background-success-light">
-            <button type="button" class="btn video_btn">Video</button>
-            <button type="button" class="btn about_btn">About</button>
+            <button type="button" class="button is-ghost video_btn">Video</button>
+            <button type="button" class="button is-ghost about_btn">About</button>
         </div>
         <!-- all post of the users  -->
         <div class="index js-index">

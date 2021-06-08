@@ -1,14 +1,14 @@
 switchElementOneFunction();
 // obj for retriving data from db of users
-const setUserName = document.querySelector('.username');
+const setUserName = _target('.username');
 setUserName.innerHTML = localStorage.getItem('userName');
 
 const userPosts = {
-	index: document.querySelector('.index'),
-	follower: document.querySelector('.followers-count'),
-	following: document.querySelector('.following-count'),
-	follow: document.querySelector('.follow'),
-	unfollow: document.querySelector('.unfollow'),
+	index: _target('.index'),
+	follower: _target('.followers-count'),
+	following: _target('.following-count'),
+	follow: _target('.follow'),
+	unfollow: _target('.unfollow'),
 
 	async fetchPostData() {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('userName') })

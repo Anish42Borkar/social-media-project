@@ -1,23 +1,23 @@
 // disabling upload btn when it is on same page
-uploadBtn.classList.add('disable');
+_target('.upload-icon').classList.add('disable');
 // preview parents
-const previewVideoParent = document.querySelector('.upload-video');
-const previewImageParent = document.querySelector('.upload-image');
+const previewVideoParent = _target('.upload-video');
+const previewImageParent = _target('.upload-image');
 
-const submitbtn = document.querySelector('.upload-btn');
+const submitbtn = _target('.upload-btn');
 
 // files parent
-const thumnailFileParent = document.querySelector('.file-thumnail');
-const videoFileParent = document.querySelector('.file-video');
+const thumnailFileParent = _target('.file-thumnail');
+const videoFileParent = _target('.file-video');
 
 // file names
 
-const imageName = thumnailFileParent.querySelector('.file-name');
-const videoName = videoFileParent.querySelector('.file-name');
+const imageName = thumnailFileParent._target('.file-name');
+const videoName = videoFileParent._target('.file-name');
 
 // files
-const previewImageFile = thumnailFileParent.querySelector('input[type=file]');
-const previewVideoFile = videoFileParent.querySelector('input[type=file]');
+const previewImageFile = thumnailFileParent._target('input[type=file]');
+const previewVideoFile = videoFileParent._target('input[type=file]');
 
 // extenctions which are allowed
 
@@ -50,7 +50,9 @@ function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoC
 		fileTitle.textContent = file.files[0].name;
 		reader.addEventListener('load', (event) => {
 			const fileContent = event.target.result;
+			console.log('out inside load');
 			if (videoCheck) {
+				console.log('inside load');
 				previewParent.innerHTML = videoPlayer(fileContent);
 				formData.append('fileVideo', file.files[0]);
 			} else {
@@ -89,8 +91,8 @@ previewVideoFile.addEventListener('change', () => {
 
 // variables to store text content
 
-const postTitle = document.querySelector('.post_title');
-const postDesc = document.querySelector('.post_desc');
+const postTitle = _target('.post_title');
+const postDesc = _target('.post_desc');
 
 function formValidate(form, name) {
 	const sibbling = form.nextElementSibling;
