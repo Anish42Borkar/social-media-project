@@ -12,12 +12,12 @@ const videoFileParent = _target('.file-video');
 
 // file names
 
-const imageName = thumnailFileParent._target('.file-name');
-const videoName = videoFileParent._target('.file-name');
+const imageName = thumnailFileParent.querySelector('.file-name');
+const videoName = videoFileParent.querySelector('.file-name');
 
 // files
-const previewImageFile = thumnailFileParent._target('input[type=file]');
-const previewVideoFile = videoFileParent._target('input[type=file]');
+const previewImageFile = thumnailFileParent.querySelector('input[type=file]');
+const previewVideoFile = videoFileParent.querySelector('input[type=file]');
 
 // extenctions which are allowed
 
@@ -50,13 +50,15 @@ function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoC
 		fileTitle.textContent = file.files[0].name;
 		reader.addEventListener('load', (event) => {
 			const fileContent = event.target.result;
+			previewParent.children[0].style.display = 'none';
+			previewParent.children[1].style.display = 'block';
 			console.log('out inside load');
 			if (videoCheck) {
 				console.log('inside load');
-				previewParent.innerHTML = videoPlayer(fileContent);
+				previewParent.children[1].setAttribute('src', fileContent);
 				formData.append('fileVideo', file.files[0]);
 			} else {
-				previewParent.innerHTML = `<img class = "image-preview" alt="" src = "${fileContent}" >`;
+				previewParent.children[1].setAttribute('src', fileContent);
 				formData.append('fileImage', file.files[0]);
 			}
 		});
@@ -82,10 +84,14 @@ function pauseVid(video) {
 }
 
 previewImageFile.addEventListener('change', () => {
+	previewImageParent.children[0].style.display = 'block';
+	previewImageParent.children[1].style.display = 'none';
 	displayPreview(allowedExtensionsImages, previewImageParent, previewImageFile, imageName, false, thumnailFileParent);
 });
 
 previewVideoFile.addEventListener('change', () => {
+	previewVideoParent.children[0].style.display = 'block';
+	previewVideoParent.children[1].style.display = 'none';
 	displayPreview(allowedExtensionsVideos, previewVideoParent, previewVideoFile, videoName, true, videoFileParent);
 });
 

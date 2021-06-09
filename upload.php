@@ -24,7 +24,10 @@
                     <!-- <span class="tag is-primary is-medium">Upload Video Here</span> -->
                     <div class="upload_files">
                         <div class="upload-media upload-video hide">
-                        
+                            <div class="loaderr">
+                                <div></div>
+                            </div>
+                            <video src="" id = "my-video" class = "video-js"  controls></video>
                         </div>
         
                         <div class="file file-video is-large  is-boxed has-name upload-file">
@@ -47,7 +50,10 @@
         
                         <!-- <span class="tag is-primary is-medium">Upload Thumnail Here</span> -->
                         <div class="upload-media upload-image hide">
-                            
+                            <div class="loaderr">
+                                <div></div>
+                            </div>
+                            <img class = "image-preview" alt="" src = "" >
                         </div>
                         <div class="file file-thumnail is-large  is-boxed has-name upload-file">
                             <label class="file-label">
