@@ -133,7 +133,7 @@ submitbtn.addEventListener('click', () => {
 	}
 
 	// let json = JSON.stringify(object);
-	console.log(object);
+	// console.log(object);
 	fetch('./api/upload.php', {
 		method: 'post',
 		body: formData

@@ -20,7 +20,8 @@
                     array_push($followingsPost,array(
                         'post'=>$row2['p_content'],
                         'id'=>$row2['u_id'],
-                        'pId'=>$row2['p_id']
+                        'pId'=>$row2['p_id'],
+                        'thumnail'=>$row2['thumnail']
                     ));
                 }
             }

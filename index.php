@@ -16,7 +16,9 @@
 
         </div>
         
+        
         <?php
+            include 'modal.php';
             include 'scripts.php';
         ?>
         <script src="js/index.js"></script>

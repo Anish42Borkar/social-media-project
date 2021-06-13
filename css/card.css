@@ -1,8 +1,12 @@
 /* card with user post and user detail  */
 .card {
 	margin: 1rem;
-	/*max-width: 1rem;*/
-	/*max-height: 10rem;*/
+	overflow: hidden;
+	border-radius: 1rem;
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	-ms-border-radius: 1rem;
+	-o-border-radius: 1rem;
 }
 
 .video_container {
@@ -10,10 +14,10 @@
 	height: 17.5rem;
 }
 
-.video {
+/* .video {
 	width: 100%;
 	height: 100%;
-}
+} */
 
 .card {
 	width: 25rem;
@@ -21,4 +25,56 @@
 
 .post_icon {
 	margin: 0.4rem;
+}
+
+.card-body > * {
+	margin: 1rem;
+}
+
+.card-image {
+	position: relative;
+}
+
+.over_lay {
+	position: absolute;
+	bottom: 0;
+	left: 0rem;
+	outline: none;
+	color: transparent;
+	width: 100%;
+	height: 100%;
+	padding: 2rem 1rem;
+	cursor: pointer;
+	transition: 0.5s;
+	background: rgba(0, 0, 0, 0.5);
+	/* opacity: 1; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.over_lay::after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f04b";
+	font-size: 4rem;
+	color: rgb(251, 245, 245);
+	display: inline-block;
+	position: absolute;
+	/*top: 3.5rem;
+	*/
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	/*margin-left: -5px;
+	*/
+	-webkit-user-select: none;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+}
+
+.over_lay:hover {
+	background: rgba(0, 0, 0, 1);
 }

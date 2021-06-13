@@ -36,6 +36,7 @@
         <div class="index js-index">
 
         </div>
+        
 
         <!-- about the customer -->
         <div class="index-about hide js-index-about">
@@ -45,6 +46,7 @@
             </p>
         </div>
         <?php
+            include 'modal.php';
             include 'scripts.php';
         ?>
         <script src="js/profile.js"></script>

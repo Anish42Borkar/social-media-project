@@ -13,7 +13,26 @@ const userPosts = {
 	async fetchPostData() {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })
 			.then((response) => {
-				minifyingResponseCode(true, this.index, response, 'currentUser', this.follower, this.following, true);
+				console.log(response.body.post);
+				if (response.body.post.length)
+					minifyingResponseCode(
+						true,
+						this.index,
+						response,
+						'currentUser',
+						this.follower,
+						this.following,
+						true
+					);
+				else {
+					let notification = `
+						<div class="notification" style = "display:flex;justify-content:center;align-item:center;width:40rem;height:10rem;padding:2rem;position:absolute;top:20rem;right:0;left:0;bottom:0;margin:auto;background:transparent;">
+								
+							<strong style = "font-size:2rem;">Dont Have Any Post To Show You</strong>
+						</div>
+					`;
+					this.index.innerHTML = notification;
+				}
 			})
 			.catch((err) => {
 				console.log(err.message);
@@ -22,3 +41,7 @@ const userPosts = {
 };
 
 userPosts.fetchPostData();
+
+window.addEventListener('load', () => {
+	modal();
+});

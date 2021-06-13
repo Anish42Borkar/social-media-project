@@ -51,7 +51,12 @@ const profilePost = (root, response, ...rest) => {
 			<div class="card">
 
 				<div class="embed-responsive embed-responsive-21by9 video_container">
-					<iframe class="video" src="${value.post}" ></iframe>
+					<div class="card-image">
+						<figure class="image is-4by3">
+							<img src="${value.thumnail}" alt="Placeholder image">
+						</figure>
+						<div class = "over_lay" data-post-path = ${value.post}></div>
+					</div>
 				</div>
 
 				<div class="card-body">
@@ -125,9 +130,112 @@ const minifyingResponseCode = (followCountRequire, root, response, ...rest) => {
 };
 
 const videoPlayer = (link) => {
-	return `<video src="${link}" id = "my-video" class = "video-js"  controls></video>`;
+	return `<video controls width="100%" height = "100%" class="video" src="${link}" ></video>`;
 };
 
 function _target(target) {
 	return document.querySelector(target);
 }
+
+function modalControl(link) {
+	const modal = _target('.modal');
+	modal.classList.add('is-active');
+	const content = modal.children[1].children[0].children[0];
+	console.log(content);
+	content.setAttribute('src', `${link}`);
+}
+
+function pauseVid(videoP) {
+	videoP.pause();
+}
+
+if (_target('.modal')) {
+	_target('.modal-close').addEventListener('click', (e) => {
+		const modalContent = _target('.modal-content');
+		const content = modalContent.children[0].children[0];
+		pauseVid(content);
+		_target('.modal').classList.remove('is-active');
+		console.log('paused');
+	});
+} else {
+	console.log('by');
+}
+
+// modal video player js function
+
+function modal() {
+	const player = document.querySelector('.player');
+	const video = player.querySelector('.viewer');
+	const progress = player.querySelector('.progress');
+	const progressBar = player.querySelector('.progress__filled');
+	const toggle = player.querySelector('.toggle');
+	const skipButtons = player.querySelectorAll('[data-skip]');
+	const ranges = player.querySelectorAll('.player__slider');
+	const fullscreen = player.querySelector('.fullscreen');
+
+	function togglePlay() {
+		const method = video.paused ? 'play' : 'pause';
+		video[method]();
+	}
+
+	function updateButton() {
+		toggle.textContent = this.paused ? '►' : '❚ ❚';
+	}
+
+	function skip() {
+		video.currentTime += parseFloat(this.dataset.skip);
+	}
+
+	function handleRangeUpdate() {
+		video[this.name] = this.value;
+	}
+
+	function handleProgress() {
+		const percent = video.currentTime / video.duration * 100;
+		progressBar.style.flexBasis = `${percent}%`;
+	}
+
+	function scrub(e) {
+		const scrubTime = e.offsetX / progress.offsetWidth * video.duration;
+		video.currentTime = scrubTime;
+	}
+
+	function requestFullscreen() {
+		video.requestFullscreen();
+	}
+
+	video.addEventListener('click', togglePlay);
+	video.addEventListener('play', updateButton);
+	video.addEventListener('pause', updateButton);
+	video.addEventListener('timeupdate', handleProgress);
+	toggle.addEventListener('click', togglePlay);
+	skipButtons.forEach((button) => button.addEventListener('click', skip));
+	ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
+	ranges.forEach((range) => range.addEventListener('mousemove', handleRangeUpdate));
+	progress.addEventListener('click', scrub);
+
+	let mousedown = false;
+
+	progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+	progress.addEventListener('mousedown', () => (mousedown = true));
+	progress.addEventListener('mouseup', () => (mousedown = false));
+	fullscreen.addEventListener('click', requestFullscreen);
+}
+
+window.addEventListener('load', () => {
+	console.log('loaded');
+	console.log(document.querySelector('.over_lay'));
+
+	setTimeout(() => {
+		if (_target('.over_lay')) {
+			console.log(document.querySelector('.over_lay'));
+			console.log('overlat');
+			document.querySelectorAll('.over_lay').forEach((ele) => {
+				ele.addEventListener('click', (e) => {
+					console.log('overlay');
+					modalControl(e.target.dataset.postPath);
+				});
+			});
+		}
+	}, 1000);
+});

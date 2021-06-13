@@ -6,7 +6,7 @@
             $userName = $data['userName'];
             $currentUser = $_SESSION['userName'];
             
-            $sql = "SELECT user.u_id,user.name,post.p_content from post,user where post.u_id = user.u_id AND user.name = '$userName'";
+            $sql = "SELECT user.u_id,user.name,post.p_content,post.thumnail from post,user where post.u_id = user.u_id AND user.name = '$userName'";
             $result = $conn->query($sql);
             $userPost = array();
             $check = false;
@@ -14,11 +14,12 @@
             if(checkNoOfRows($result))
                 while($row = $result->fetch_array(MYSQLI_ASSOC))
                     array_push($userPost,array(
-                        'post'=>$row['p_content']
+                        'post'=>$row['p_content'],
+                        'thumnail'=>$row['thumnail']
                     ));
             if($currentUser != $userName)
                 $check = checkFollowingOrNot($currentUser,$userName,$conn);
-            $response = array('status'=>true,'message'=>(checkNoOfRows($result) ? "Record Found" : "No Record Found" ),"body"=>array('post'=>$userPost,'name'=>$userName,'check'=>($check ? true : false)));  
+            $response = array('status'=>true,'message'=>"Record Found" ,"body"=>array('post'=>$userPost,'name'=>$userName,'check'=>($check ? true : false)));  
         }
         else $response = array('status'=>false,'message'=>"No Session is Set","body"=>null);
     }

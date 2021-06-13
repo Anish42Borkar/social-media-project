@@ -49,6 +49,7 @@
         </div>
         
         <?php
+        include 'modal.php';
             include 'scripts.php';
         ?>
         <script src="js/userProfile.js"></script>

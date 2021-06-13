@@ -13,10 +13,21 @@ const userPosts = {
 	async fetchPostData() {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('userName') })
 			.then((response) => {
+				console.log(response.body.post.length);
 				if (response.body.check) this.follow.style.display = 'none';
 				else this.unfollow.style.display = 'none';
 
 				minifyingResponseCode(true, this.index, response, 'differentUser', this.follower, this.following, true);
+				if (!response.body.post.length) {
+					console.log(response.body.post.length);
+					let notification = `
+						<div class="notification" style = "display:flex;justify-content:center;align-item:center;width:40rem;height:10rem;padding:2rem;position:absolute;top:20rem;right:0;left:0;bottom:0;margin:auto;background:transparent;">
+
+							<strong style = "font-size:2rem;">Dont Have Any Post To Show You</strong>
+						</div>
+					`;
+					this.index.innerHTML = notification;
+				}
 			})
 			.catch(console.error);
 	}
@@ -49,3 +60,7 @@ async function followUnfollow() {
 		})
 		.catch(console.error);
 }
+
+window.addEventListener('load', () => {
+	modal();
+});

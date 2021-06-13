@@ -92,7 +92,7 @@ const userRegisteration = {
 			.then((response) => {
 				if (response.message === 'Registered Success')
 					swal('You have successfully registered').then((value) => {
-						location.href = './login.html';
+						location.href = './login.php';
 					});
 			})
 			.catch((err) => {
