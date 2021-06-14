@@ -1,6 +1,20 @@
 <?php
     include 'connect.php';
-    // include '../api/connect.php';
+    //  $videoPath = "uploads/".basename($_FILES['fileVideo']['name']);
+    // $imagePath = "uploads/".basename($_FILES['fileImage']['name']);
+
+    // $tempFile = $_FILES['fileVideo']['tmp_name'];
+    // if(!$tempFile){
+    //     echo json_encode(array('message'=>"error: plasese upload a file",'status'=>false));
+    //     exit();
+    // }
+    // if(move_uploaded_file($_FILES['fileVideo']['tmp_name'],$videoPath) and move_uploaded_file($_FILES['fileImage']['tmp_name'],$imagePath) ){
+    //     echo json_encode(array('message'=>"file uploaded",'status'=>true));
+    // }
+    // else{
+        // echo json_encode(array('message'=>"file faild uploaded",'status'=>false,'body'=>$_FILES,'values'=>$_POST));
+    // }
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
        if(isset($_SESSION['userName'])){
            $current = $_SESSION['userId'];

@@ -99,14 +99,15 @@
                 </div>
 
                 <div class="buttons upload-btn">
-                <a class="button is-primary">Submit</a>
+                    <a class="button is-primary">Submit</a>
                 </div>
                 
             </div>
         
         </section>
         <?php
-        include 'scripts.php';
+            include 'uploadModal.php';
+            include 'scripts.php';
         ?>
 
         <script src='js/upload.js'></script>

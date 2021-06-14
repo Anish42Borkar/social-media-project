@@ -6,7 +6,7 @@
             $userName = $data['userName'];
             $currentUser = $_SESSION['userName'];
             
-            $sql = "SELECT user.u_id,user.name,post.p_content,post.thumnail from post,user where post.u_id = user.u_id AND user.name = '$userName'";
+            $sql = "SELECT user.u_id,user.name,post.p_content,post.thumnail,post.p_title,post.p_discription from post,user where post.u_id = user.u_id AND user.name = '$userName'";
             $result = $conn->query($sql);
             $userPost = array();
             $check = false;
@@ -15,7 +15,9 @@
                 while($row = $result->fetch_array(MYSQLI_ASSOC))
                     array_push($userPost,array(
                         'post'=>$row['p_content'],
-                        'thumnail'=>$row['thumnail']
+                        'thumnail'=>$row['thumnail'],
+                        'title'=>$row['p_title'],
+                        'desc'=>$row['p_discription']
                     ));
             if($currentUser != $userName)
                 $check = checkFollowingOrNot($currentUser,$userName,$conn);

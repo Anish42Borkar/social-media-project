@@ -35,7 +35,7 @@ function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoC
 		fileParent.classList.remove('is-success');
 		previewParent.classList.add('hide');
 
-		if (videoCheck) pauseVid(previewParent.querySelector('.video-js'));
+		if (videoCheck) pauseVid1(previewParent.querySelector('.video-js'));
 		return false;
 	}
 	console.log('check1');
@@ -77,7 +77,7 @@ function displayPreview(CheckExtenctions, previewParent, file, fileTitle, videoC
 	}
 }
 
-function pauseVid(video) {
+function pauseVid1(video) {
 	if (video === null) return false;
 	console.log('paused');
 	video.pause();
@@ -107,7 +107,7 @@ function formValidate(form, name) {
 		form.classList.remove('is-success');
 		form.classList.add('is-danger');
 		sibbling.classList.remove('hide');
-		sibbling.value = 'Cannot be null';
+		sibbling.innerHtml = 'Cannot be null';
 	} else {
 		form.classList.remove('is-warning');
 		form.classList.remove('is-danger');
@@ -134,18 +134,23 @@ submitbtn.addEventListener('click', () => {
 
 	// let json = JSON.stringify(object);
 	// console.log(object);
-	fetch('./api/upload.php', {
-		method: 'post',
-		body: formData
-	})
-		.then((response) => {
-			return response.json();
-		})
-		.then((response) => {
-			console.log(response);
-			swal('Good job!', 'You clicked the button!', 'success');
-		})
-		.catch(console.error);
+	// fetch('./api/upload.php', {
+	// 	method: 'post',
+	// 	body: formData
+	// })
+	// 	.then((response) => {
+	// 		return response.json();
+	// 	})
+	// 	.then((response) => {
+	// 		console.log(response);
+	// 		swal('Good job!', 'You clicked the button!', 'success');
+	// 	})
+	// 	.catch(console.error);
+	const modal = _target('.modal');
+	modal.classList.add('is-active');
+	// modal.addEventListener('DOMContentLoaded', (e) => {
+	uploadFile(formData, './api/upload.php');
+	// });
 });
 
 // const sheet = new CSSStyleSheet();

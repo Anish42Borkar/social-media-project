@@ -21,7 +21,9 @@
                         'post'=>$row2['p_content'],
                         'id'=>$row2['u_id'],
                         'pId'=>$row2['p_id'],
-                        'thumnail'=>$row2['thumnail']
+                        'thumnail'=>$row2['thumnail'],
+                        'title'=>$row2['p_title'],
+                        'desc'=>$row2['p_discription']
                     ));
                 }
             }

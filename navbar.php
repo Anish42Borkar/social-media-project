@@ -5,7 +5,7 @@
         <!-- Navigation bar -->
         <nav class="menubar">
 
-        <div class="icon"><img src="Images/logo.png" alt="">
+        <div class="icon"><img src="images/logo2.png" alt="" class = "logo">
         </div>
 
         <div>

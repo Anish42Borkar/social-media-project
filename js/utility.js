@@ -61,8 +61,8 @@ const profilePost = (root, response, ...rest) => {
 
 				<div class="card-body">
 
-					<h5 class="card-title">poste title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h5 class="card-title">${value.title}</h5>
+					<p class="card-text">${value.desc}</p>
 
 					<div class="card_footer">
 						<span class="post_icon"><i class="far fa-heart fa-2x"></i></span>
@@ -146,14 +146,24 @@ function modalControl(link) {
 }
 
 function pauseVid(videoP) {
-	videoP.pause();
+	try {
+		videoP.pause();
+		return true;
+	} catch (e) {
+		return false;
+	}
 }
 
 if (_target('.modal')) {
 	_target('.modal-close').addEventListener('click', (e) => {
 		const modalContent = _target('.modal-content');
 		const content = modalContent.children[0].children[0];
-		pauseVid(content);
+		if (pauseVid(content)) {
+		}
+		if (_target('.progress')) {
+			_target('.progress').value = 0;
+			_target('.modal-close').classList.add('hide');
+		}
 		_target('.modal').classList.remove('is-active');
 		console.log('paused');
 	});
@@ -239,3 +249,40 @@ window.addEventListener('load', () => {
 		}
 	}, 1000);
 });
+
+// Form Upload with process bar
+
+function uploadFile(formData, path) {
+	let ajex = new XMLHttpRequest();
+
+	ajex.upload.addEventListener('progress', progressHandler, false);
+	ajex.addEventListener('load', completeHandler, false);
+	ajex.addEventListener('error', errorHandler, false);
+	ajex.addEventListener('abort', abortHandler, false);
+	ajex.open('POST', path);
+	ajex.send(formData);
+}
+
+function progressHandler(event) {
+	_target('.loaded_n_total').innerHTML = `Uploaded ${event.loaded} bytes of ${event.total}`;
+	let percent = event.loaded / event.total * 100;
+	_target('.progress').value = Math.round(percent);
+	_target('.status').innerHTML = Math.round(percent) + '%Uploaded...please wait';
+}
+
+function completeHandler(event) {
+	let json = JSON.parse(event.target.responseText);
+	_target('.status').innerHTML = json.message;
+	_target('.modal-close').classList.remove('hide');
+	console.log(json);
+}
+
+function errorHandler(event) {
+	_target('.modal-close').classList.remove('hide');
+	_target('.status').innerHTML = 'Upload failed';
+}
+
+function abortHandler(event) {
+	_target('.modal-close').classList.remove('hide');
+	_target('.status').innerHTML = 'Upload aboded';
+}
