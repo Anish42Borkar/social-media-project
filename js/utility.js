@@ -43,7 +43,7 @@ const profilePost = (root, response, ...rest) => {
 		username.innerText = response.body.name;
 	}
 
-	if (response.body.post == '') return false;
+	if (!response.body.post.length) return false;
 
 	for (let value of response.body.post) {
 		console.log(value);
@@ -271,10 +271,15 @@ function progressHandler(event) {
 }
 
 function completeHandler(event) {
-	let json = JSON.parse(event.target.responseText);
-	_target('.status').innerHTML = json.message;
-	_target('.modal-close').classList.remove('hide');
-	console.log(json);
+	try {
+		let json = JSON.parse(event.target.responseText);
+		_target('.status').innerHTML = json.message;
+		_target('.modal-close').classList.remove('hide');
+		console.log(json);
+	} catch (e) {
+		_target('.status').innerHTML = 'Unexpected error occourred';
+		_target('.modal-close').classList.remove('hide');
+	}
 }
 
 function errorHandler(event) {
@@ -285,4 +290,10 @@ function errorHandler(event) {
 function abortHandler(event) {
 	_target('.modal-close').classList.remove('hide');
 	_target('.status').innerHTML = 'Upload aboded';
+}
+
+// footer
+function footerFun(bool) {
+	if (bool) _target('.foot').style.position = 'relative';
+	else _target('.foot').style.position = 'absolute';
 }

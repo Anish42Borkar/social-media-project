@@ -14,17 +14,9 @@ const userPosts = {
 		await fetchData('./api/profile.php', { userName: localStorage.getItem('currentUser') })
 			.then((response) => {
 				console.log(response.body.post);
-				if (response.body.post.length)
-					minifyingResponseCode(
-						true,
-						this.index,
-						response,
-						'currentUser',
-						this.follower,
-						this.following,
-						true
-					);
-				else {
+
+				minifyingResponseCode(true, this.index, response, 'currentUser', this.follower, this.following, true);
+				if (!response.body.post.length) {
 					let notification = `
 						<div class="notification" style = "display:flex;justify-content:center;align-item:center;width:40rem;height:10rem;padding:2rem;position:absolute;top:20rem;right:0;left:0;bottom:0;margin:auto;background:transparent;">
 								
