@@ -2,7 +2,8 @@ const hideSelfLink = _target('.setting-link-js');
 hideSelfLink.classList.add('has-background-primary-light', 'disable');
 
 let profileCheck = false,
-	coverCheck = false;
+	coverCheck = false,
+	descriptionCheck = false;
 // extenctions which are allowed
 const allowedExtensionsImages = /(\.jpg|\.jpeg|\.png)$/i;
 
@@ -33,7 +34,7 @@ function displayPreview(CheckExtenctions, previewParent, file, type) {
 			const fileContent = event.target.result;
 			console.log(file);
 			previewParent.children[0].setAttribute('src', fileContent);
-			if (type === 'profile') formData.append('profile', file.files[0]);
+			if (type === 'profile') formData.append('file', file.files[0]);
 			formData.append('cover', file.files[0]);
 		});
 
@@ -52,6 +53,10 @@ cover.addEventListener('change', () => {
 
 const desc = _target('.textarea');
 
+desc.addEventListener('change', () => {
+	descriptionCheck = true;
+});
+
 function formDesc(form, name) {
 	formData.append(name, form.value);
 }
@@ -59,9 +64,10 @@ function formDesc(form, name) {
 const submitbtn = _target('.save');
 
 submitbtn.addEventListener('click', () => {
-	formDesc(desc, 'desc');
-	formData.append('profile', profileCheck);
-	formData.append('cover', coverCheck);
+	formDesc(desc, 'description');
+	formData.append('profileCheck', profileCheck);
+	formData.append('coverCheck', coverCheck);
+	formData.append('descriptionCheck', descriptionCheck);
 
 	console.log('submited');
 	const modal = _target('.modal');

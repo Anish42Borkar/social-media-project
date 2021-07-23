@@ -65,7 +65,7 @@ const profilePost = (root, response, ...rest) => {
 					<p class="card-text">${value.desc}</p>
 
 					<div class="card_footer">
-						<span class="post_icon post_like" data-post-id = ${value.pId}><i class="far fa-heart fa-2x"></i></span>
+						<span class="post_icon post_like" data-post-id = ${value.pId}><i class="far fa-heart fa-2x like_check" data-liked = ${value.liked}></i><span class = "ctag">${value.likeCounts}</span></span>
 						<span class="post_icon post_share"><i class="fab fa-telegram-plane fa-2x"></i></span>
 						<span class="post_icon post_comment" data-post-id = ${value.pId} ><i class="far fa-comment fa-2x"></i></span>
 					</div>
@@ -339,8 +339,29 @@ function likeEvent() {
 		likeBtns.forEach((item) => {
 			item.addEventListener('click', () => {
 				like(parseInt(item.dataset.postId), item);
-				// console.log(item);
+				// console.log(parseInt(item.dataset.postId));
 			});
 		});
 	}, 1000);
+}
+
+function likedCheck() {
+	setTimeout(() => {
+		document.querySelectorAll('.like_check').forEach((ele) => {
+			if (ele.dataset.liked === 'liked') {
+				ele.classList.remove('far');
+				ele.classList.add('fas');
+			} else {
+				ele.classList.remove('fas');
+				ele.classList.add('far');
+			}
+		});
+	}, 1000);
+	// if (check) {
+	// 	item.classList.remove('far');
+	// 	item.classList.add('fas');
+	// } else {
+	// 	item.classList.remove('fas');
+	// 	item.classList.add('far');
+	// }
 }

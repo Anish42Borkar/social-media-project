@@ -38,4 +38,5 @@ window.addEventListener('load', () => {
 	modal();
 	cmt();
 	likeEvent();
+	likedCheck();
 });

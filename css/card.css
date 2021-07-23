@@ -100,3 +100,9 @@
 .post_share :hover {
 	color: hsl(217, 71%, 53%);
 }
+.ctag {
+	padding: 0.5rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: hsl(348, 100%, 61%);
+}
