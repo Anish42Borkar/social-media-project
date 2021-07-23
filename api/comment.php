@@ -7,7 +7,7 @@
             
             if(isset($data['comment_load_data'])){
                 $postId = $data['postId'];
-                $comments_query = "SELECT * FROM comment where p_id = '$postId'";
+                $comments_query = "SELECT * FROM comment WHERE p_id = '$postId' ORDER BY commented_on ASC";
                 $comments_query_run = mysqli_query($conn,$comments_query);
         
                 $array_result = [];
