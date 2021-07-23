@@ -16,11 +16,19 @@ window.addEventListener('load', () => {
 				commentData = `
 					<div class = "card" style = "width:80%;">
 						<div class = "card-content">
-								<p><b>${value.user.name + ' ' + value.cmt.commented_on}</b></p>
+								<p class = "click_user_link"><b data-user-name = ${value.user.name} >${value.user.name +
+					' ' +
+					value.cmt.commented_on}</b></p>
 								<p>${value.cmt.msg}</p>
 						</div>
 					</div>
 				`;
+				// const card = document.createElement('div');
+				// card.setAttribute("style","width:80%;");
+				// card.setAttribute("class","card");
+				// const cardContent = document.createElement('div');
+				// cardContent.setAttribute("class","card-content");
+
 				_target('.comment').innerHTML += commentData;
 			}
 		});
@@ -48,4 +56,14 @@ window.addEventListener('load', () => {
 	}
 
 	_target('.comment-btn').addEventListener('click', addComment);
+	setTimeout(() => {
+		document.querySelectorAll('.click_user_link').forEach((item) => {
+			item.addEventListener('click', () => {
+				console.log('user clicked', item.children[0].dataset.userName);
+
+				localStorage.setItem('userName', item.children[0].dataset.userName);
+				location.href = './userProfile.php';
+			});
+		});
+	}, 1000);
 });

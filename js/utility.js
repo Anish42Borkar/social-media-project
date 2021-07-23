@@ -65,7 +65,7 @@ const profilePost = (root, response, ...rest) => {
 					<p class="card-text">${value.desc}</p>
 
 					<div class="card_footer">
-						<span class="post_icon post_like"><i class="far fa-heart fa-2x"></i></span>
+						<span class="post_icon post_like" data-post-id = ${value.pId}><i class="far fa-heart fa-2x"></i></span>
 						<span class="post_icon post_share"><i class="fab fa-telegram-plane fa-2x"></i></span>
 						<span class="post_icon post_comment" data-post-id = ${value.pId} ><i class="far fa-comment fa-2x"></i></span>
 					</div>
@@ -309,5 +309,38 @@ function cmt() {
 				location.href = './comment.php';
 			})
 		);
+	}, 1000);
+}
+
+async function like(postId, likeBtnParent) {
+	const data = {
+		postId
+	};
+	let likeBtn = likeBtnParent.children[0];
+	await fetchData('./api/likeButton.php', data).then((response) => {
+		console.log('like btn', response);
+		if (response.message === 'Like successful') {
+			likeBtn.classList.remove('far');
+			likeBtn.classList.add('fas');
+		} else if (response.message === 'Unlike successful') {
+			likeBtn.classList.remove('fas');
+			likeBtn.classList.add('far');
+		} else {
+			alert('something went wrong in like section');
+		}
+	});
+}
+
+function likeEvent() {
+	console.log('like event');
+	setTimeout(() => {
+		console.log('like event2');
+		let likeBtns = document.querySelectorAll('.post_like');
+		likeBtns.forEach((item) => {
+			item.addEventListener('click', () => {
+				like(parseInt(item.dataset.postId), item);
+				// console.log(item);
+			});
+		});
 	}, 1000);
 }

@@ -1,0 +1,4 @@
+.comment .card .card-content p b:hover {
+	color: hsl(217, 71%, 53%);
+	cursor: pointer;
+}

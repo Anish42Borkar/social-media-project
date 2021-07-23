@@ -46,12 +46,14 @@ changePassBtn.addEventListener('click', () => {
 	let currPass = checkBlank(currentPassword),
 		newPass = checkBlank(newPassword),
 		comPass = checkBlank(confirmPassword);
-
+	console.log(currentPassword.value, newPassword.value);
 	if (currPass && newPass && comPass) {
 		if (comparePassword(newPassword, confirmPassword)) {
+			let cP = currentPassword.value;
+			let nP = newPassword.value;
 			const data = {
-				currentPassword,
-				newPassword
+				currentPassword: cP,
+				newPassword: nP
 			};
 			fetchData('./api/changePassword.php', data).then((response) => {
 				swal(`${response.message}`);

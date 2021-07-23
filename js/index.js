@@ -29,4 +29,5 @@ timelinePost.fetchPostData();
 window.addEventListener('load', () => {
 	modal();
 	cmt();
+	likeEvent();
 });

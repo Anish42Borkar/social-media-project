@@ -12,7 +12,7 @@
         <!-- has-background-primary-light disable -->
         <div class="container is-max-desktop">
         <div class="notification is-primary setting_lable">
-            Uploade You`r Files Here
+            Upload Your Files Here
         </div>
         </div>
 
@@ -38,11 +38,11 @@
                                         <i class="fas fa-upload"></i>
                                     </span>
                                     <span class="file-label">
-                                        Upload Video...
+                                        Upload Video
                                     </span>
                                 </span>
                                 <span class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                    mp4 mov ogv webm only
                                 </span>
                             </label>
                         </div>
@@ -67,7 +67,7 @@
                                     </span>
                                 </span>
                                 <span class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                    jpg jpeg png only
                                 </span>
                             </label>
                         </div>

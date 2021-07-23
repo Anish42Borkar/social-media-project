@@ -78,3 +78,25 @@
 .over_lay:hover {
 	background: rgba(0, 0, 0, 1);
 }
+
+.post_comment,
+.post_like,
+.post_share {
+	cursor: pointer;
+}
+
+.post_comment :hover {
+	color: hsl(217, 71%, 53%);
+}
+
+.post_like :hover {
+	color: hsl(348, 100%, 61%);
+}
+
+.post_like i.fas {
+	color: hsl(348, 100%, 61%);
+}
+
+.post_share :hover {
+	color: hsl(217, 71%, 53%);
+}

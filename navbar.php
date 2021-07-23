@@ -11,7 +11,7 @@
         <div>
 
             <form class="" action="">
-                <input class="search" type="text" placeholder="search">
+                <input class="search" type="text" placeholder="Search">
             </form>
 
         </div>

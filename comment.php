@@ -12,7 +12,7 @@
         ?>
         <section class="section is-medium" >
             <div class = "container">
-                <h1 class="title has-text-link-dark">Add a comment</h1>
+                <h1 class="title has-text-link-dark">Add Comment</h1>
                 <textarea class="textarea is-info comment-box" placeholder="Comment!"></textarea>
                 <div class="buttons"style= "display:flex;justify-content:flex-end;padding:1rem;">
                     <button class="button is-info comment-btn" >Comment</button>
