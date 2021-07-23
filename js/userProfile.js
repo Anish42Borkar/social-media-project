@@ -23,7 +23,7 @@ const userPosts = {
 					let notification = `
 						<div class="notification" style = "display:flex;justify-content:center;align-item:center;width:40rem;height:10rem;padding:2rem;position:absolute;top:20rem;right:0;left:0;bottom:0;margin:auto;background:transparent;">
 
-							<strong style = "font-size:2rem;">Dont Have Any Post To Show You</strong>
+							<strong style = "font-size:2rem;">No Post Uploaded</strong>
 						</div>
 					`;
 					this.index.innerHTML = notification;

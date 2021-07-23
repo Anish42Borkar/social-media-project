@@ -35,7 +35,7 @@ const login = {
 
 					if (response.message === 'login success') {
 						localStorage.setItem('currentUser', this.userNameLogin.value);
-						swal('You have successfully loged in').then((value) => {
+						swal('login successful').then((value) => {
 							location.href = './index.php';
 						});
 					} else {

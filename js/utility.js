@@ -65,9 +65,9 @@ const profilePost = (root, response, ...rest) => {
 					<p class="card-text">${value.desc}</p>
 
 					<div class="card_footer">
-						<span class="post_icon"><i class="far fa-heart fa-2x"></i></span>
-						<span class="post_icon"><i class="fab fa-telegram-plane fa-2x"></i></span>
-						<span class="post_icon"><i class="far fa-comment fa-2x"></i></span>
+						<span class="post_icon post_like"><i class="far fa-heart fa-2x"></i></span>
+						<span class="post_icon post_share"><i class="fab fa-telegram-plane fa-2x"></i></span>
+						<span class="post_icon post_comment" data-post-id = ${value.pId} ><i class="far fa-comment fa-2x"></i></span>
 					</div>
 
 				</div>
@@ -162,7 +162,7 @@ if (_target('.modal')) {
 		}
 		if (_target('.progress')) {
 			_target('.progress').value = 0;
-			_target('.modal-close').classList.add('hide');
+			// _target('.modal-close').classList.add('hide');
 		}
 		_target('.modal').classList.remove('is-active');
 		console.log('paused');

@@ -56,7 +56,7 @@
                     <div class="overlay-panel overlay-left">
                         <img src="Images/logo2" alt="">
                         <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
+                        <p>To connect with us please login with your personal info</p>
                         <button class="ghost" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">

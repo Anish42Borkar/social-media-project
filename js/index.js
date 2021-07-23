@@ -13,7 +13,7 @@ const timelinePost = {
 					let notification = `
 						<div class="notification" style = "display:flex;justify-content:center;align-item:center;width:40rem;height:10rem;padding:2rem;position:absolute;top:0;right:0;left:0;bottom:0;margin:auto;background:transparent;">
 							
-							<strong style = "font-size:2rem;">Dont Have Any Post To Show You</strong>
+							<strong style = "font-size:2rem;">Follow creators to view their post</strong>
 						</div>
 					`;
 					this.index.innerHTML = notification;
@@ -28,4 +28,15 @@ timelinePost.fetchPostData();
 
 window.addEventListener('load', () => {
 	modal();
+	setTimeout(() => {
+		const comments = document.querySelectorAll('.post_comment');
+		comments.forEach((item) =>
+			item.addEventListener('click', () => {
+				console.log(item.dataset);
+				localStorage.setItem('postId', item.dataset.postId);
+				console.log('cmt', localStorage.getItem('postId'));
+				location.href = './comment.php';
+			})
+		);
+	}, 1000);
 });
