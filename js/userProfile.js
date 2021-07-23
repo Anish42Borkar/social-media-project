@@ -63,4 +63,5 @@ async function followUnfollow() {
 
 window.addEventListener('load', () => {
 	modal();
+	cmt();
 });

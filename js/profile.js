@@ -36,4 +36,5 @@ userPosts.fetchPostData();
 
 window.addEventListener('load', () => {
 	modal();
+	cmt();
 });

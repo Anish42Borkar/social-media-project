@@ -297,3 +297,17 @@ function footerFun(bool) {
 	if (bool) _target('.foot').style.position = 'relative';
 	else _target('.foot').style.position = 'absolute';
 }
+
+function cmt() {
+	setTimeout(() => {
+		const comments = document.querySelectorAll('.post_comment');
+		comments.forEach((item) =>
+			item.addEventListener('click', () => {
+				console.log(item.dataset);
+				localStorage.setItem('postId', item.dataset.postId);
+				console.log('cmt', localStorage.getItem('postId'));
+				location.href = './comment.php';
+			})
+		);
+	}, 1000);
+}
